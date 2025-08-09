@@ -1,0 +1,236 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Prevent flash of unstyled content */
+html {
+  color-scheme: dark;
+}
+
+/* Ensure dark mode is applied immediately */
+html.dark {
+  color-scheme: dark;
+}
+
+html:not(.dark) {
+  color-scheme: light;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+    
+    /* Hero animation custom properties */
+    --accent: #ff8a00;
+    --accent-hover: #ff6b00;
+    --accent-active: #ff4500;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    
+    /* Hero animation custom properties for dark mode */
+    --accent: #ff8a00;
+    --accent-hover: #ff6b00;
+    --accent-active: #ff4500;
+  }
+}
+
+/* Loader + Skeleton CSS */
+@keyframes stripe {
+  0% { background-position: 0 0; }
+  100% { background-position: 24px 0; }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  background-size: 300% 100%;
+  animation: skeleton-shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-shimmer { animation: none; }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  /* Hero cover blocks: GPU-friendly transforms only */
+  .hero-cover { contain: layout paint style; }
+  .hero-cover__block {
+    /* Let GSAP fully control transforms to avoid double transforms */
+    transform: translateZ(0);
+    will-change: transform;
+  }
+  
+  /* Hide *visual* scrollbar without blocking scroll input */
+  html, body {
+    overflow-y: auto;               /* allow scrolling */
+    scrollbar-width: none;          /* Firefox */
+  }
+  body::-webkit-scrollbar { display: none; }  /* Chrome / Edge / Safari */
+  
+  /* Overscroll behavior */
+  html {
+    overscroll-behavior: none;
+  }
+  
+  /* Outfit font family */
+  .font-outfit {
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+/* ScrollSmoother styles (only applied when wrapper exists) */
+/* No global fixed wrapper to avoid trapping scroll on other pages */
+
+/* Performance optimizations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Mobile optimizations */
+:root[style*="--mobile-optimized: true"] {
+  --reduced-complexity: true;
+}
+
+/* Pinned headline styles */
+.headline--pinned {
+  position: fixed !important;
+  top: 2rem !important;
+  left: 2rem !important;
+  z-index: 1000 !important;
+  pointer-events: none !important;
+  transform: scale(0.6) !important;
+  transition: opacity 0.3s ease !important;
+}
+
+/* Floating headline styles */
+.headline--floating {
+  position: fixed !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 1000 !important;
+  pointer-events: none !important;
+  font-size: 2rem !important;
+  color: var(--accent) !important;
+  text-shadow: 0 0 20px rgba(255, 138, 0, 0.5) !important;
+}
+
+/* Character animation styles */
+.char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* Performance optimizations for Three.js */
+canvas {
+  will-change: transform;
+  contain: layout style paint;
+}
+
+/* Cursor handling: keep default cursor for interactivity to avoid a11y/UX issues */
+/* If a custom cursor is needed, scope it to a class instead of global * selector */
+
+/* Custom cursor for better UX */
+.custom-cursor {
+  pointer-events: none;
+  position: fixed;
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+
+/* Ensure custom cursor is hidden on touch devices */
+@media (hover: none) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
+/* GSAP performance optimizations */
+.gsap-marker-start,
+.gsap-marker-end,
+.gsap-marker-scroller-start,
+.gsap-marker-scroller-end {
+  display: none !important;
+}
+
+/* Reduce motion for low performance devices */
+@media (max-width: 768px) {
+  .char {
+    animation-duration: 0.5s !important;
+  }
+}
+
+/* Marquee (used in InfoPanels) */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .char {
+    color: #ffffff !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+  }
+}
