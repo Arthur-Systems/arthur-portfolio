@@ -143,7 +143,7 @@
     "unplugin-auto-import": "^20.0.0",
     "unplugin-vue-components": "^29.0.0",
     "vite-plugin-pwa": "^1.0.2",
-    "vitest": "^2.0.5",
+    "vitest": "^3.2.4",
     "webpack-bundle-analyzer": "^4.10.2"
   }
 }
