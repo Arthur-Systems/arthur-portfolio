@@ -12,43 +12,6 @@ const nextConfig: NextConfig = {
   },
   // Enable React Strict Mode for better development experience
   reactStrictMode: true,
-  webpack: (config, { dev, isServer }) => {
-    if (!dev) {
-      // Production optimizations only
-      config.optimization = {
-        ...config.optimization,
-        splitChunks: {
-          chunks: 'all',
-          cacheGroups: {
-            vendor: {
-              test: /[\\/]node_modules[\\/]/,
-              name: 'vendors',
-              chunks: 'all',
-            },
-            common: {
-              name: 'common',
-              minChunks: 2,
-              chunks: 'all',
-              enforce: true,
-            },
-          },
-        },
-        minimize: true,
-        minimizer: [
-          '...',
-          new (require('terser-webpack-plugin'))({
-            terserOptions: {
-              compress: {
-                drop_console: true,
-                drop_debugger: true,
-              },
-            },
-          }),
-        ],
-      };
-    }
-    return config;
-  },
   eslint: {
     // 构建时忽略ESLint错误
     ignoreDuringBuilds: true,

@@ -15,7 +15,12 @@ export default class ErrorBoundary extends React.Component<Props, State> {
 
   componentDidCatch(error: Error, info: React.ErrorInfo) {
     this.setState({ error, info });
-    NavDebugBus.emit({ type: 'error', message: error.message, stack: error.stack, ts: performance.now() });
+    const ts = performance.now();
+    if (typeof error.stack === 'string') {
+      NavDebugBus.emit({ type: 'error', message: error.message, stack: error.stack, ts });
+    } else {
+      NavDebugBus.emit({ type: 'error', message: error.message, ts });
+    }
   }
 
   render() {
@@ -33,6 +38,7 @@ export default class ErrorBoundary extends React.Component<Props, State> {
     return this.props.children as React.ReactElement;
   }
 }
+
 
 
 

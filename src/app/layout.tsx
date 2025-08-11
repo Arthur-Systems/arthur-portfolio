@@ -5,6 +5,7 @@ import "@fontsource-variable/space-grotesk";
 import "@fontsource-variable/inter";
 import "@fontsource-variable/sora";
 import { Toaster } from "@/components/ui/toaster";
+import { Suspense } from "react";
 import { ThemeProvider } from "@/components/common/ThemeProvider";
 import { ThemeToggle } from "@/components/common/ThemeToggle";
 import { Navigation } from "@/components/layout/Navigation";
@@ -81,24 +82,29 @@ export default function RootLayout({
         <ThemeProvider>
           <LoaderProvider>
             <UIReadyProvider>
-              <RouteTransitionProvider>
-                <LoadingOverlay />
-                <NavigationObserver />
-                <ClientGate>
+              <Suspense fallback={null}>
+                <RouteTransitionProvider>
+                  <LoadingOverlay />
+                  <NavigationObserver />
+                  <ClientGate>
                   <ScrollFixer />
                   <CustomScrollbar />
                   <CustomCursor />
                   <ThemeToggle />
-                  <Navigation />
-                  <main>
-                    <ErrorBoundary>
-                      {children}
-                    </ErrorBoundary>
-                  </main>
-                  <Toaster />
-                </ClientGate>
-                <NavigationDiagnosticsOverlay />
-              </RouteTransitionProvider>
+                  {/* Page-wide gradient background to avoid black band behind fixed nav or pin spacers */}
+                  <div className="min-h-screen bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.30)_0%,transparent_50%),radial-gradient(circle_at_80%_20%,rgba(255,119,198,0.30)_0%,transparent_50%),linear-gradient(135deg,#0f172a_0%,#000000_50%,#0f172a_100%)]">
+                    <Navigation />
+                    <main aria-busy={false} suppressHydrationWarning>
+                      <ErrorBoundary>
+                        {children}
+                      </ErrorBoundary>
+                    </main>
+                    <Toaster />
+                  </div>
+                  </ClientGate>
+                  <NavigationDiagnosticsOverlay />
+                </RouteTransitionProvider>
+              </Suspense>
             </UIReadyProvider>
           </LoaderProvider>
         </ThemeProvider>

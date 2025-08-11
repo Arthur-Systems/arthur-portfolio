@@ -18,96 +18,187 @@ interface TechProject {
 
 const techProjects: TechProject[] = [
   {
-    id: '1',
-    title: '3D Portfolio Engine',
-    description: 'A custom Three.js engine for interactive portfolio experiences with real-time rendering.',
-    date: '2024 Q1',
-    technologies: ['Three.js', 'WebGL', 'React', 'TypeScript'],
-    codeSnippet: `function createInteractiveScene() {
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(
-    75, window.innerWidth / window.innerHeight, 0.1, 1000
+    id: 'polynomial',
+    title: 'Polynomial – CSE 115A Team Management System',
+    description: 'A real-time project and team management platform integrated with Discord.',
+    date: 'Spring 2024',
+    technologies: ['React', 'Node.js', 'MongoDB', 'Discord API', 'WebSockets', 'GitHub Pages'],
+    codeSnippet: `import express from 'express';
+import type { Request, Response } from 'express';
+
+const app = express();
+
+app.post('/api/tasks', async (req: Request, res: Response) => {
+  const task = await db.collection('tasks').insertOne(req.body);
+  await discordClient.channels.cache.get(process.env.CHANNEL_ID!)?.send(
+    'New task created: ' + req.body.title
   );
-  
-  const renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  
-  // Add interactive objects
-  const geometry = new THREE.BoxGeometry();
-  const material = new THREE.MeshPhongMaterial({ 
-    color: 0x00ff00,
-    shininess: 100
+  res.json(task);
+});`,
+    highlights: [
+      'Project creation & team member management',
+      'Real-time status dashboard',
+      'Card and stacked list task views',
+      'Discord notifications',
+      'WBS, Scrum + CPM',
+    ],
+  },
+  {
+    id: 'pan-audit-ai',
+    title: 'Pan-Audit AI Toolkit – MetafoodX Internship',
+    description: 'AI-powered system for auditing commercial kitchen pans.',
+    date: 'Jan 2024 – Apr 2024',
+    technologies: [
+      'Python',
+      'PyTorch',
+      'YOLOv8',
+      'TensorFlow Lite',
+      'AWS S3',
+      'AWS Lambda',
+      'API Gateway',
+      'DynamoDB',
+      'CUDA',
+    ],
+    codeSnippet: `import torch
+from ultralytics import YOLO
+
+model = YOLO('pan-seg.pt')  # YOLOv8 segmentation
+pred = model(depth_image)[0]
+mask = pred.masks.data[0]
+volume_ml = estimate_volume(depth_map, mask)
+
+s3.put_object(Bucket='pans', Key=key, Body=json.dumps({'volume_ml': float(volume_ml)}))`,
+    highlights: [
+      'Depth image processing for volume + empty weight',
+      'YOLOv8-based detection and classification',
+      'Segmentation for filled vs empty pans',
+      'Android tablet-optimized inference',
+    ],
+  },
+  {
+    id: 'grading-automation',
+    title: 'Grading Automation Platform – UCSC Course Reader',
+    description: 'Automatic Zybooks → Canvas grade uploader and feedback publisher.',
+    date: 'Sep 2024 – Present',
+    technologies: ['Python', 'Pandas', 'Zybooks API', 'Canvas API'],
+    codeSnippet: `import pandas as pd
+
+zy = fetch_zybooks_grades(token)
+df = pd.DataFrame(zy).rename(columns={'user_id': 'student_id'})
+
+for row in df.itertuples():
+    canvas.update_grade(course_id, row.student_id, row.assignment_id, row.score)`,
+    highlights: [
+      'Pulls Zybooks grades via API',
+      'Publishes grades and comments to Canvas',
+      'Handles entire gradebook',
+      'Secure token-based config',
+    ],
+  },
+  {
+    id: 'yolov8-android',
+    title: 'YOLOv8 Android Integration – Personal Project',
+    description: 'Deploying YOLOv8 segmentation models on Android tablets for real-time classification.',
+    date: 'Summer 2025',
+    technologies: [
+      'Android',
+      'Java',
+      'YOLOv8',
+      'ONNX',
+      'TensorFlow Lite',
+      'GPU Delegate',
+      'Quantization',
+    ],
+    codeSnippet: `GpuDelegate delegate = new GpuDelegate();
+Interpreter.Options options = new Interpreter.Options().addDelegate(delegate);
+Interpreter tflite = new Interpreter(loadModelFile("yolov8-seg.tflite"), options);
+tflite.run(inputBuffer, outputBuffer);`,
+    highlights: [
+      'PyTorch → ONNX → TFLite',
+      'Handled missing TFLite metadata',
+      'Manual preprocessing pipeline',
+      'Fixed segmentation mask scaling',
+    ],
+  },
+  {
+    id: 'waymo-research',
+    title: 'Waymo Dataset – Autonomous Vehicle Lab Research',
+    description:
+      'Adapted computer vision models to work effectively with Waymo dataset for human–vehicle interaction research.',
+    date: '2023 – Early 2024',
+    technologies: ['PyTorch', 'TensorFlow', 'Waymo Open Dataset'],
+    codeSnippet: `for frame in load_waymo_frames(tfrecord_path):
+    images = extract_images(frame)
+    detections = model(images)
+    track(detections)`,
+    highlights: ['Model adaptation', 'Dataset preprocessing', 'Detection & tracking'],
+  },
+  {
+    id: 'discord-collab',
+    title: 'Discord Real-time Collaboration Tool – Polynomial spin-off',
+    description:
+      'A Discord bot and dashboard that supports collaborative project tracking in real time.',
+    date: '2024',
+    technologies: ['Node.js', 'Express', 'MongoDB', 'Discord API', 'WebSockets'],
+    codeSnippet: `wss.on('connection', (socket) => {
+  socket.on('message', (msg) => {
+    broadcast(msg);
+    discordClient.channels.cache.get(CHANNEL_ID).send('Update: ' + msg);
   });
-  
-  const cube = new THREE.Mesh(geometry, material);
-  scene.add(cube);
-  
-  return { scene, camera, renderer };
-}`,
-    highlights: ['Real-time rendering', 'Interactive controls', 'Performance optimized'],
+});`,
+    highlights: [
+      'Real-time updates via WebSockets',
+      'Discord bot integration',
+      'Project tracking dashboard',
+    ],
   },
   {
-    id: '2',
-    title: 'Motion Design System',
-    description: 'A comprehensive animation system using GSAP for complex web interactions.',
-    date: '2023 Q4',
-    technologies: ['GSAP', 'React', 'Framer Motion', 'TypeScript'],
-    codeSnippet: `export const useParallaxEffect = (ref: RefObject<HTMLElement>) => {
-  useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-
-    const handleScroll = () => {
-      const scrolled = window.pageYOffset;
-      const rate = scrolled * -0.5;
-      
-      gsap.to(element, {
-        y: rate,
-        duration: 1,
-        ease: 'power2.out'
-      });
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [ref]);
-};`,
-    highlights: ['Smooth animations', 'Scroll-triggered effects', 'Performance optimized'],
-  },
-  {
-    id: '3',
-    title: 'AI-Powered Image Generator',
-    description: 'Integration with AI APIs for dynamic image generation and manipulation.',
-    date: '2023 Q3',
-    technologies: ['Next.js', 'OpenAI API', 'Prisma', 'PostgreSQL'],
-    codeSnippet: `async function generateImage(prompt: string) {
-  try {
-    const response = await fetch('/api/generate-image', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt })
-    });
-    
-    const data = await response.json();
-    return data.imageUrl;
-  } catch (error) {
-    console.error('Image generation failed:', error);
-    return null;
-  }
-}`,
-    highlights: ['Real-time generation', 'API integration', 'Error handling'],
+    id: 'pan-selection-spec',
+    title: '2D Pan Selection Feature Using YOLOv8 – Functional Specification',
+    description:
+      'Specification for adding a YOLOv8-powered 2D bounding box selector for pans in the audit tool.',
+    date: 'Jul 2025',
+    technologies: ['YOLOv8', 'Python', 'Segmentation'],
+    codeSnippet: `boxes = yolo(frame).boxes.xyxy
+selected = pick_highest_confidence(boxes, class_name='pan')
+return selected`,
+    highlights: [
+      'YOLOv8-powered 2D selector',
+      'Integrates with existing audit pipeline',
+      'Unit-testable interface',
+    ],
   },
 ];
 
 const techStack = [
   { name: 'React', icon: '⚛️', color: '#61DAFB' },
-  { name: 'Next.js', icon: '▲', color: '#000000' },
-  { name: 'TypeScript', icon: '📝', color: '#3178C6' },
-  { name: 'Three.js', icon: '🎮', color: '#000000' },
-  { name: 'GSAP', icon: '🎬', color: '#88CE02' },
   { name: 'Node.js', icon: '🟢', color: '#339933' },
+  { name: 'Express', icon: '🚏', color: '#000000' },
+  { name: 'MongoDB', icon: '🍃', color: '#47A248' },
+  { name: 'Discord API', icon: '💬', color: '#5865F2' },
+  { name: 'WebSockets', icon: '🔌', color: '#333333' },
   { name: 'Python', icon: '🐍', color: '#3776AB' },
+  { name: 'Pandas', icon: '🐼', color: '#150458' },
+  { name: 'Zybooks API', icon: '📘', color: '#1E40AF' },
+  { name: 'Canvas API', icon: '🧑\u200d🏫', color: '#CC3333' },
+  { name: 'PyTorch', icon: '🔥', color: '#EE4C2C' },
+  { name: 'YOLOv8', icon: '🧠', color: '#000000' },
+  { name: 'TensorFlow Lite', icon: '🟠', color: '#FF6F00' },
+  { name: 'ONNX', icon: '🔷', color: '#1F6FEB' },
+  { name: 'CUDA', icon: '⚡', color: '#76B900' },
+  { name: 'Android', icon: '🤖', color: '#3DDC84' },
+  { name: 'Java', icon: '☕', color: '#007396' },
+  { name: 'GPU Delegate', icon: '🧩', color: '#333333' },
+  { name: 'Quantization', icon: '🎚️', color: '#999999' },
+  { name: 'AWS S3', icon: '🪣', color: '#569A31' },
+  { name: 'AWS Lambda', icon: 'λ', color: '#FF9900' },
+  { name: 'API Gateway', icon: '🛣️', color: '#FF9900' },
+  { name: 'DynamoDB', icon: '🗄️', color: '#527FFF' },
+  { name: 'Waymo Open Dataset', icon: '🚘', color: '#000000' },
   { name: 'Docker', icon: '🐳', color: '#2496ED' },
+  { name: 'GitHub Pages', icon: '📄', color: '#24292e' },
+  { name: 'TypeScript', icon: '📝', color: '#3178C6' },
+  { name: 'Next.js', icon: '▲', color: '#000000' },
 ];
 
 export const TechTimeline = () => {

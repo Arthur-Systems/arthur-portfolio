@@ -18,7 +18,7 @@ export class HeroTimeline {
   private config: HeroTimelineConfig;
   private mainTimeline!: gsap.core.Timeline;
   private scrollTimeline!: gsap.core.Timeline;
-  private threeContext: any;
+  private visualContext: any;
   private splitText: SplitText | null = null;
   private quickX: any = null;
   private quickY: any = null;
@@ -28,7 +28,7 @@ export class HeroTimeline {
 
   constructor(config: HeroTimelineConfig) {
     this.config = config;
-    this.threeContext = null; // Three.js removed
+    this.visualContext = null; // 3D visuals removed
     this.init();
   }
 
@@ -53,7 +53,7 @@ export class HeroTimeline {
       this.mainTimeline = gsap.timeline();
 
       // 1. Zero-G orb idle animation
-      // Three.js visuals removed; keep text/indicator animations only
+      // 3D visuals removed; keep text/indicator animations only
 
       // 2. Text reveal with SplitText 3.13
       if (headline) {
@@ -131,7 +131,7 @@ export class HeroTimeline {
       });
 
       // Phase 1: Orb → metaball droplets (0-0.3)
-      // Removed phase changes tied to Three.js uniforms
+      // Removed phase changes tied to shader uniforms
 
       // Phase 2: Headline switch-out with Flip (0.3-0.6)
       if (headline && this.splitText) {
@@ -216,12 +216,12 @@ export class HeroTimeline {
   private setupMicroInteractions() {
     const ctx = gsap.context(() => {
       // 1. Pointer move parallax with quickTo
-      if (this.threeContext?.mesh) {
-        this.quickX = gsap.quickTo(this.threeContext.mesh.rotation, 'y', {
+      if (this.visualContext?.mesh) {
+        this.quickX = gsap.quickTo(this.visualContext.mesh.rotation, 'y', {
           duration: 0.6,
           ease: 'power3'
         });
-        this.quickY = gsap.quickTo(this.threeContext.mesh.rotation, 'x', {
+        this.quickY = gsap.quickTo(this.visualContext.mesh.rotation, 'x', {
           duration: 0.6,
           ease: 'power3'
         });
@@ -251,11 +251,11 @@ export class HeroTimeline {
       }
 
       // 2. Touch "tilt" with Observer
-      if (this.threeContext?.scene) {
+      if (this.visualContext?.scene) {
         this.observer = Observer.create({
           onChangeY: (self: any) => {
             const velocity = self.velocityY || 0;
-            gsap.to(this.threeContext.scene.rotation, {
+            gsap.to(this.visualContext.scene.rotation, {
               x: `+=${velocity * 0.1}`,
               duration: 0.8,
               ease: 'power2.out'
@@ -263,7 +263,7 @@ export class HeroTimeline {
           },
           onChangeX: (self: any) => {
             const velocity = self.velocityX || 0;
-            gsap.to(this.threeContext.scene.rotation, {
+            gsap.to(this.visualContext.scene.rotation, {
               y: `+=${velocity * 0.1}`,
               duration: 0.8,
               ease: 'power2.out'

@@ -1,14 +1,19 @@
-import EngineerHero from '@/components/hero/EngineerHero';
+import { HeroSection } from '@/components/layout/HeroSection';
 import { InfoPanels } from '@/components/layout/InfoPanels';
-import HeroScene from '@/components/hero/HeroScene';
+import AboutSection from '@/components/about/AboutSection';
+// Removed 3D orb visual
+import ScrollReveal from '@/components/ScrollReveal';
 
 export default function Home() {
   return (
     <div className="min-h-screen">
-      {/* Lightweight DOM visual in place of prior WebGL hero */}
-      <HeroScene />
-      <EngineerHero />
-      <InfoPanels />
+      <HeroSection />
+      <AboutSection />
+      <ScrollReveal direction="up">
+        <section>
+          <InfoPanels />
+        </section>
+      </ScrollReveal>
     </div>
   );
 }

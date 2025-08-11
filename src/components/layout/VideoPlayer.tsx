@@ -31,7 +31,7 @@ const videoItems: VideoItem[] = [
   {
     id: '2',
     title: '3D Animation Tutorial',
-    description: 'Learn the basics of Three.js animation',
+    description: 'Learn the basics of web animation',
     thumbnail: '/api/placeholder/400/225',
     duration: '12:45',
     url: '#',

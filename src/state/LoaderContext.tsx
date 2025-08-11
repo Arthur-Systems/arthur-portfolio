@@ -70,7 +70,11 @@ export function LoaderProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const mainEl = document.querySelector('main');
     if (mainEl) {
-      mainEl.setAttribute('aria-busy', isLoading ? 'true' : 'false');
+      // Avoid hydration mismatch by only toggling aria-busy after hydration.
+      // SSR sets aria-busy={false} statically in layout.
+      if (typeof window !== 'undefined') {
+        mainEl.setAttribute('aria-busy', isLoading ? 'true' : 'false');
+      }
       // Try inert if supported
       try {
         if (isLoading) {

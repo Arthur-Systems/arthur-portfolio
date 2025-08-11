@@ -13,9 +13,18 @@ export function fullGsapTeardown() {
   const smoother = ScrollSmoother.get();
   if (smoother) smoother.kill();
 
-  // 3. Restore any inline styles GSAP may have left
+  // 3. Remove any lingering pin spacer elements created by ScrollTrigger
+  try {
+    const spacers = document.querySelectorAll('.gsap-pin-spacer, .pin-spacer');
+    spacers.forEach((node) => node.parentElement?.removeChild(node));
+  } catch {}
+
+  // 4. Restore any inline styles GSAP may have left
   gsap.set(['html', 'body'], { clearProps: 'all' });
 
-  // 4. Refresh on next paint so the new page calculates cleanly
-  requestAnimationFrame(() => ScrollTrigger.refresh());
+  // 5. Clear matchMedia contexts and refresh on next paint so the new page calculates cleanly
+  try { ScrollTrigger.clearMatchMedia(); } catch {}
+  requestAnimationFrame(() => {
+    try { ScrollTrigger.refresh(); } catch {}
+  });
 }
