@@ -19,6 +19,7 @@ export type MapViewProps = {
   spotlight?: boolean; // dim outside a spotlight area
   spotlightPosition?: { xPercent: number; yPercent: number; inner: number; outer: number }; // 0-100
   children?: React.ReactNode; // optional overlays (Source/Layer, markers)
+  hideControls?: boolean; // hide default map controls
 };
 
 /**
@@ -39,6 +40,7 @@ export default function MapView({
   spotlight = true,
   spotlightPosition,
   children,
+  hideControls = false,
 }: MapViewProps) {
   const defaultStyle = useMemo(() => {
     // Public demo style that works without tokens (MapLibre demo). Replace as needed.
@@ -78,21 +80,20 @@ export default function MapView({
         style={{ pointerEvents: nonInteractive ? 'none' : undefined }}
         styleDiffing
       >
-        {!nonInteractive && <NavigationControl position="top-right" visualizePitch={false} />}
-        {!nonInteractive && <ScaleControl position="bottom-left" unit="metric" />}
+        {!nonInteractive && !hideControls && (
+          <NavigationControl position="top-right" visualizePitch={false} />
+        )}
+        {!nonInteractive && !hideControls && <ScaleControl position="bottom-left" unit="metric" />}
         {children}
       </Map>
-      <div className="pointer-events-none absolute inset-0">
+      <div className="absolute inset-0">
         {spotlight && (
           <div aria-hidden className="absolute inset-0" style={{ background: spotlightCss }} />
         )}
         {overlay ? (
-          <div className="absolute inset-0 flex items-end justify-between p-3">
-            {/* gradient scrim for readability */}
+          <div className="absolute inset-0 p-3 pointer-events-none">
             <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/40 to-transparent" />
-            <div className="relative ml-1 inline-flex items-center rounded-full border border-white/20 bg-black/40 px-2.5 py-1 text-[11px] text-white/90 backdrop-blur-sm">
-              {overlay}
-            </div>
+            {overlay}
           </div>
         ) : null}
       </div>
