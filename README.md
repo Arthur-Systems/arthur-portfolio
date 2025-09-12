@@ -102,6 +102,16 @@ npm run db:studio            # Open Prisma Studio
 npm run start                # Start production server
 ```
 
+## ☁️ Deploying to Vercel
+
+- Set the following Environment Variables in Vercel → Project → Settings → Environment Variables:
+  - `NEXT_PUBLIC_SITE_URL` = your production URL (e.g., https://arthurwei.com)
+  - `DATABASE_URL` = your managed DB connection string (if using Prisma)
+- Prisma: The build runs `prisma generate` via `postinstall`. Run migrations against your managed DB using CI/CD or a one-off job; do not run `migrate` during Vercel build.
+- API routes under `src/app/api/*` run as serverless or edge (your `/api/og` is `runtime='edge'`).
+- The Socket.IO server in `server.ts` is not used on Vercel. If you need realtime, use an Edge WebSocket function or a managed provider (Ably, Pusher) or host Socket.IO separately.
+- Ensure `NEXT_PUBLIC_SITE_URL` is set so OG/Twitter cards, `robots.ts`, and `sitemap.ts` render absolute URLs.
+
 ## 🎞️ Scroll Reveal Transitions
 
 - `ScrollReveal` provides a curtain-style reveal between sections using CSS `clip-path` driven by GSAP ScrollTrigger scrub. The next section emerges while the current recedes; no jump cuts.

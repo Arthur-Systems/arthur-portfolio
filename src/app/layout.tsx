@@ -39,7 +39,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Arthur Wei • Engineer • Photographer • Storyteller",
     description: "Creating immersive digital experiences at the intersection of technology and creativity.",
-    url: "https://arthurwei.com",
+    url:
+      process.env.NEXT_PUBLIC_SITE_URL ??
+      `http://localhost:${process.env.PORT ?? 3000}`,
     siteName: "Arthur Wei",
     type: "website",
     images: [
