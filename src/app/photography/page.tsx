@@ -1,8 +1,8 @@
 'use client';
-
 import { useRef, useEffect } from 'react';
 import { gsap, ScrollTrigger } from '@/lib/gsapTimelines';
 import PhotoGallery from '@/components/scenes/PhotoGallery';
+
 
 export default function PhotographyPage() {
   const heroRef = useRef<HTMLDivElement>(null);

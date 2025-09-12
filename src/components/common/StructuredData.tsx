@@ -12,7 +12,8 @@ export const StructuredData = ({ type, data }: StructuredDataProps) => {
         return {
           "@context": "https://schema.org",
           "@type": "Person",
-          "name": "Arthur Wei",
+          "name": "Haichuan Wei",
+          "alternateName": "Arthur Wei",
           "jobTitle": "Engineer, Photographer, Storyteller",
           "description": "Creating immersive digital experiences at the intersection of technology and creativity.",
           "url": "https://arthurwei.com",
@@ -34,12 +35,12 @@ export const StructuredData = ({ type, data }: StructuredDataProps) => {
         return {
           "@context": "https://schema.org",
           "@type": "WebSite",
-          "name": "Arthur Wei - Portfolio",
-          "description": "Personal portfolio of Arthur Wei - Engineer, Photographer, and Storyteller.",
+          "name": "Haichuan (Arthur) Wei - Portfolio",
+          "description": "Personal portfolio of Haichuan (Arthur) Wei — Engineer, Photographer, and Storyteller.",
           "url": "https://arthurwei.com",
           "author": {
             "@type": "Person",
-            "name": "Arthur Wei"
+            "name": "Haichuan Wei"
           },
           "potentialAction": {
             "@type": "SearchAction",
@@ -56,11 +57,11 @@ export const StructuredData = ({ type, data }: StructuredDataProps) => {
           "description": data.description,
           "author": {
             "@type": "Person",
-            "name": "Arthur Wei"
+            "name": "Haichuan Wei"
           },
           "publisher": {
             "@type": "Organization",
-            "name": "Arthur Wei",
+            "name": "Haichuan Wei",
             "logo": {
               "@type": "ImageObject",
               "url": "https://arthurwei.com/logo.png"

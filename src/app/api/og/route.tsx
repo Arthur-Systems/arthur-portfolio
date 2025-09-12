@@ -48,7 +48,7 @@ export async function GET() {
               lineHeight: 1.1,
             }}
           >
-            Arthur Wei
+            Haichuan Wei
           </h1>
           
           <p

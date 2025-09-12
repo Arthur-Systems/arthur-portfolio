@@ -21,6 +21,8 @@ import { RouteTransitionProvider } from "@/state/RouteTransitionContext";
 import NavigationObserver, { NavigationDiagnosticsOverlay } from "@/components/NavigationObserver";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import Head from "./head";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   /** 👇 absolute origin for OG + Twitter cards */
@@ -30,36 +32,41 @@ export const metadata: Metadata = {
   ),
   
   title: {
-    default: "Arthur Wei • Engineer • Photographer • Storyteller",
-    template: "%s | Arthur Wei",
+    default: "Haichuan (Arthur) Wei • Engineer • Photographer • Storyteller",
+    template: "%s | Haichuan Wei",
   },
-  description: "Personal portfolio of Arthur Wei - Engineer, Photographer, and Storyteller. Creating immersive digital experiences at the intersection of technology and creativity.",
-  keywords: ["Arthur Wei", "Engineer", "Photographer", "Storyteller", "Full-stack Developer", "3D Graphics", "Motion Design", "Creative Technology"],
-  authors: [{ name: "Arthur Wei" }],
+  description: "Personal portfolio of Haichuan (Arthur) Wei — Engineer, Photographer, and Storyteller. Creating immersive digital experiences at the intersection of technology and creativity.",
+  keywords: ["Haichuan Wei", "Arthur Wei", "Engineer", "Photographer", "Storyteller", "Full-stack Developer", "3D Graphics", "Motion Design", "Creative Technology"],
+  authors: [{ name: "Haichuan Wei" }, { name: "Arthur Wei" }],
   openGraph: {
-    title: "Arthur Wei • Engineer • Photographer • Storyteller",
+    title: "Haichuan Wei • Engineer • Photographer • Storyteller",
     description: "Creating immersive digital experiences at the intersection of technology and creativity.",
     url:
       process.env.NEXT_PUBLIC_SITE_URL ??
       `http://localhost:${process.env.PORT ?? 3000}`,
-    siteName: "Arthur Wei",
+    siteName: "Haichuan Wei",
     type: "website",
     images: [
       {
-        url: "/api/og?title=Arthur Wei&subtitle=Engineer • Photographer • Storyteller",
+        url: "/api/og?title=Haichuan%20Wei&subtitle=Engineer%20•%20Photographer%20•%20Storyteller",
         width: 1200,
         height: 630,
-        alt: "Arthur Wei Portfolio",
+        alt: "Haichuan Wei Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arthur Wei • Engineer • Photographer • Storyteller",
+    title: "Haichuan Wei • Engineer • Photographer • Storyteller",
     description: "Creating immersive digital experiences at the intersection of technology and creativity.",
-    images: ["/api/og?title=Arthur Wei&subtitle=Engineer • Photographer • Storyteller"],
+    images: ["/api/og?title=Haichuan%20Wei&subtitle=Engineer%20•%20Photographer%20•%20Storyteller"],
   },
   robots: "index, follow",
+  alternates: {
+    canonical:
+      process.env.NEXT_PUBLIC_SITE_URL ??
+      `http://localhost:${process.env.PORT ?? 3000}`,
+  },
 };
 
 export const viewport = {
@@ -105,6 +112,8 @@ export default function RootLayout({
                   </div>
                   </ClientGate>
                   <NavigationDiagnosticsOverlay />
+                  <SpeedInsights />
+                  <Analytics />
                 </RouteTransitionProvider>
               </Suspense>
             </UIReadyProvider>

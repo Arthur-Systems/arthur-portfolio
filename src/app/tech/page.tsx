@@ -12,7 +12,6 @@ export default function TechPage() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Animate hero section
     if (titleRef.current && subtitleRef.current) {
       gsap.from(titleRef.current, {
         opacity: 0,
@@ -29,6 +28,7 @@ export default function TechPage() {
         ease: 'power3.out',
       });
     }
+
     requestAnimationFrame(() => {
       try { (ScrollTrigger as any).refresh?.(); } catch {}
     });
@@ -36,13 +36,11 @@ export default function TechPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Section */}
       <section
         ref={heroRef}
         className="min-h-[50vh] flex items-center justify-center relative overflow-hidden"
       >
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background/20" />
-        
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <h1
             ref={titleRef}
@@ -50,7 +48,6 @@ export default function TechPage() {
           >
             Technology
           </h1>
-          
           <p
             ref={subtitleRef}
             className="text-xl md:text-2xl text-muted-foreground font-light"
@@ -60,7 +57,6 @@ export default function TechPage() {
         </div>
       </section>
 
-      {/* Tech Timeline */}
       <TechTimeline />
     </div>
   );

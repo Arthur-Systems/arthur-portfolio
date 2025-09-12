@@ -15,7 +15,6 @@ export default function VideoPage() {
     gsap.registerPlugin(ScrollTrigger);
     Loader.start('Preparing video gallery…');
 
-    // Animate hero section
     if (titleRef.current && subtitleRef.current) {
       gsap.from(titleRef.current, {
         opacity: 0,
@@ -35,20 +34,17 @@ export default function VideoPage() {
   }, []);
 
   useEffect(() => {
-    // Simulate gallery warm-up
     const t = setTimeout(() => Loader.finish(), 400);
     return () => clearTimeout(t);
   }, []);
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Hero Section */}
       <section
         ref={heroRef}
         className="min-h-[50vh] flex items-center justify-center relative overflow-hidden"
       >
         <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background/20" />
-        
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <h1
             ref={titleRef}
@@ -56,7 +52,6 @@ export default function VideoPage() {
           >
             Video
           </h1>
-          
           <p
             ref={subtitleRef}
             className="text-xl md:text-2xl text-muted-foreground font-light"
@@ -66,7 +61,6 @@ export default function VideoPage() {
         </div>
       </section>
 
-      {/* Video Player */}
       <VideoPlayer />
     </div>
   );
