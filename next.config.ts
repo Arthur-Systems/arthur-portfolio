@@ -140,6 +140,17 @@ const nextConfig: NextConfig = {
         destination: '/tech',
         permanent: false,
       },
+      {
+        source: '/furry',
+        has: [
+          {
+            type: 'host',
+            value: 'furry.localhost:3000',
+          },
+        ],
+        destination: '/furry',
+        permanent: false,
+      },
     ];
   },
 };

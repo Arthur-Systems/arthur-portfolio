@@ -1,6 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
+import MapView from '@/components/MapView';
+import { Source, Layer } from 'react-map-gl/maplibre';
 
 type AboutLocationProps = {
   className?: string;
@@ -10,6 +12,51 @@ type AboutLocationProps = {
  * SF Bay Area spotlight with a simple embedded OpenStreetMap and quick facts.
  */
 const AboutLocation: React.FC<AboutLocationProps> = ({ className = '' }) => {
+  const cityLineData = useMemo(
+    () => ({
+      type: 'FeatureCollection',
+      features: [
+        {
+          type: 'Feature',
+          properties: {},
+          geometry: {
+            type: 'LineString',
+            coordinates: [
+              [-122.4194, 37.7749], // San Francisco
+              [-122.2712, 37.8044], // Oakland
+              [-121.8863, 37.3382], // San Jose
+            ],
+          },
+        },
+      ],
+    }),
+    []
+  );
+
+  const cityPointData = useMemo(
+    () => ({
+      type: 'FeatureCollection',
+      features: [
+        {
+          type: 'Feature',
+          properties: { name: 'San Francisco' },
+          geometry: { type: 'Point', coordinates: [-122.4194, 37.7749] },
+        },
+        {
+          type: 'Feature',
+          properties: { name: 'Oakland' },
+          geometry: { type: 'Point', coordinates: [-122.2712, 37.8044] },
+        },
+        {
+          type: 'Feature',
+          properties: { name: 'San Jose' },
+          geometry: { type: 'Point', coordinates: [-121.8863, 37.3382] },
+        },
+      ],
+    }),
+    []
+  );
+
   return (
     <div
       data-about-location
@@ -29,14 +76,21 @@ const AboutLocation: React.FC<AboutLocationProps> = ({ className = '' }) => {
           <div className="text-[11px] text-white/60">San Francisco • Oakland • San Jose</div>
         </div>
         <div className="p-4">
-          {/* OSM embed centered on San Francisco with Bay Area bounds */}
           <div className="relative w-full overflow-hidden rounded-md border border-white/10">
-            <iframe
-              title="SF Bay Area Map"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=-123.10%2C37.00%2C-121.50%2C38.60&layer=mapnik&marker=37.7749%2C-122.4194"
-              style={{ width: '100%', height: 260, border: 0 }}
-              loading="lazy"
-            />
+            <MapView
+              height={260}
+              initialViewState={{ latitude: 37.8, longitude: -122.3, zoom: 8.3 }}
+              nonInteractive
+              spotlight={false}
+            >
+              <Source id="city-lines" type="geojson" data={cityLineData as any}>
+                <Layer id="city-lines-line" type="line" paint={{ 'line-color': '#60a5fa', 'line-width': 2.5, 'line-opacity': 0.9 }} />
+              </Source>
+              <Source id="city-points" type="geojson" data={cityPointData as any}>
+                <Layer id="city-points-circles" type="circle" paint={{ 'circle-radius': 4, 'circle-color': '#f59e0b', 'circle-stroke-color': '#111827', 'circle-stroke-width': 1.5 }} />
+                <Layer id="city-labels" type="symbol" layout={{ 'text-field': ['get', 'name'], 'text-size': 11, 'text-offset': [0, 1.2] }} paint={{ 'text-color': '#e5e7eb', 'text-halo-color': '#111827', 'text-halo-width': 0.6 }} />
+              </Source>
+            </MapView>
           </div>
           <div className="mt-3 flex flex-wrap gap-2 text-white/85">
             {['Peninsula', 'South Bay', 'East Bay', 'North Bay'].map((area) => (

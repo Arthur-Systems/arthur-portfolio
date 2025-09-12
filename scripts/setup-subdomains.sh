@@ -20,6 +20,7 @@ else
     echo "127.0.0.1 photo.localhost" | sudo tee -a $HOSTS_FILE
     echo "127.0.0.1 video.localhost" | sudo tee -a $HOSTS_FILE
     echo "127.0.0.1 tech.localhost" | sudo tee -a $HOSTS_FILE
+    echo "127.0.0.1 furry.localhost" | sudo tee -a $HOSTS_FILE
     echo "Subdomain entries added successfully!"
 fi
 
@@ -28,5 +29,6 @@ echo "You can now access your subdomains at:"
 echo "  📸 Photography: http://photo.localhost:3000"
 echo "  🎬 Video: http://video.localhost:3000"
 echo "  💻 Technology: http://tech.localhost:3000"
+echo "  🐾 Furry: http://furry.localhost:3000"
 echo ""
 echo "Make sure your development server is running with: npm run dev" 

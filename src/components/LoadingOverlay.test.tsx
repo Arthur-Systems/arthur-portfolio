@@ -24,7 +24,7 @@ describe('LoadingOverlay', () => {
       Loader.step(80, 'Calibrating ranges…');
     });
 
-    act(() => {
+    act(() => { 
       Loader.finish();
     });
 

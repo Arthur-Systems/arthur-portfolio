@@ -5,11 +5,9 @@ import AboutPhoto from './AboutPhoto';
 import AboutHighlights from './AboutHighlights';
 import AboutEmbeds from './AboutEmbeds';
 import AboutLocation from './AboutLocation';
-import AboutCertification from './AboutCertification';
 import { initAboutFx, killAboutFx } from '@/lib/aboutFx';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { initMetaFx, killMetaFx } from '../../lib/aboutMetaFx';
-import { initAboutBlocksFx, killAboutBlocksFx } from '@/lib/aboutBlocksFx';
 
 export const AboutSection: React.FC = () => {
   const rootRef = useRef<HTMLElement | null>(null);
@@ -19,10 +17,8 @@ export const AboutSection: React.FC = () => {
     if (rootRef.current) {
       initAboutFx(rootRef.current);
       initMetaFx(rootRef.current);
-      initAboutBlocksFx(rootRef.current);
     }
     return () => {
-      killAboutBlocksFx();
       killMetaFx();
       killAboutFx();
     };
@@ -135,45 +131,33 @@ export const AboutSection: React.FC = () => {
           </div>
         </section>
 
-        {/* Spotlight: AWS (ScrollTrigger pin + wipe reveal) */}
-        <div data-aws-wrapper className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] h-[220vh] mt-8">
+        {/* AWS skills (simple) */}
         <section
-          data-aws-stage
-          className="relative h-screen w-screen overflow-hidden bg-transparent text-black"
+          data-about-block="aws"
+          className="mt-10 w-full rounded-2xl md:rounded-3xl overflow-hidden bg-white/5 backdrop-blur-xl ring-1 ring-inset ring-white/10"
         >
-          {/* Overlay reveal layer */}
-          <div
-            data-aws-overlay
-            className="pointer-events-none absolute inset-0 z-50 relative bg-white"
-          >
-            {/* White wipe behind the mark */}
-            <div data-aws-wipe className="absolute inset-0 bg-white z-0" />
-
-            <div data-aws-mark className="absolute left-1/2 -translate-x-1/2 top-4 md:top-6 flex flex-col items-center gap-4 will-change-transform z-10">
-              {/* Official AWS logotype (inline via SVG file) */}
-              <img
-                data-aws-logo
-                src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg"
-                alt="AWS"
-                className="w-[min(44vw,320px)] h-auto select-none"
-                loading="eager"
-                decoding="async"
-                draggable={false}
-              />
-              <div data-aws-certified className="flex gap-1 font-semibold tracking-[0.08em] text-[clamp(1.25rem,4vw,2.25rem)] opacity-0 translate-y-2">
-                {Array.from('CERTIFIED').map((ch, i) => (
-                  <span key={`${ch}-${i}`} data-letter>{ch}</span>
-                ))}
-              </div>
-              <svg data-aws-check viewBox="0 0 48 48" className="w-10 h-10 opacity-0" aria-hidden="true">
-                <path d="M6 26l10 10L42 10" fill="none" stroke="#16a34a" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" style={{ strokeDasharray: 100, strokeDashoffset: 100 }} />
-              </svg>
-            </div>
+          <div className="container mx-auto max-w-6xl px-6 py-10 md:py-14">
+            <h3 className="text-white font-semibold">AWS skills</h3>
+            <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-white/85">
+              <li className="flex gap-3">
+                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-amber-300" aria-hidden />
+                <span>Certified Solutions Architect — Associate (SAA‑C03)</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-amber-300" aria-hidden />
+                <span>Designing resilient, cost‑optimized, secure architectures</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-amber-300" aria-hidden />
+                <span>Hands‑on: S3, Lambda, API Gateway, EC2, RDS, VPC</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-amber-300" aria-hidden />
+                <span>Observability and reliability (CloudWatch, X-Ray)</span>
+              </li>
+            </ul>
           </div>
-
-          <div data-aws-details className="relative z-0 container mx-auto max-w-6xl px-6 py-12 md:py-16" />
         </section>
-        </div>
 
         {/* Extra: personal blurb */}
         <div data-about-extra className="mt-12 text-white/80 max-w-3xl">
