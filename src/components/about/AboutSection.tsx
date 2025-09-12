@@ -8,6 +8,8 @@ import AboutLocation from './AboutLocation';
 import { initAboutFx, killAboutFx } from '@/lib/aboutFx';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { initMetaFx, killMetaFx } from '../../lib/aboutMetaFx';
+import { Check } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 
 export const AboutSection: React.FC = () => {
   const rootRef = useRef<HTMLElement | null>(null);
@@ -94,29 +96,10 @@ export const AboutSection: React.FC = () => {
               </div>
             </div>
 
-            <AboutHighlights className="mt-8" />
 
-            {/* Inline meta pills */}
-            <div data-about-meta className="mt-6 flex flex-wrap gap-2 text-white/90">
-              <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs sm:text-sm backdrop-blur-sm ring-1 ring-white/10">SF Bay Area</span>
-              <span className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs sm:text-sm backdrop-blur-sm ring-1 ring-white/10">AWS Certified (SAA-C03)</span>
-            </div>
 
-            {/* Selected impact placeholders */}
-            <div className="mt-4 flex flex-wrap gap-2 text-white/90">
-              {[
-                '↓ p95 latency 38%',
-                '↑ throughput 3.2×',
-                '99.98% SLO (4Q trailing)',
-              ].map((m) => (
-                <span
-                  key={m}
-                  className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] sm:text-xs backdrop-blur-sm ring-1 ring-white/10"
-                >
-                  {m}
-                </span>
-              ))}
-            </div>
+
+
 
           </div>
         </div>
@@ -131,66 +114,104 @@ export const AboutSection: React.FC = () => {
           </div>
         </section>
 
-        {/* AWS skills (simple) */}
-        <section
-          data-about-block="aws"
-          className="mt-10 w-full rounded-2xl md:rounded-3xl overflow-hidden bg-white/5 backdrop-blur-xl ring-1 ring-inset ring-white/10"
-        >
-          <div className="container mx-auto max-w-6xl px-6 py-10 md:py-14">
-            <h3 className="text-white font-semibold">AWS skills</h3>
-            <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-white/85">
-              <li className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-amber-300" aria-hidden />
-                <span>Certified Solutions Architect — Associate (SAA‑C03)</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-amber-300" aria-hidden />
-                <span>Designing resilient, cost‑optimized, secure architectures</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-amber-300" aria-hidden />
-                <span>Hands‑on: S3, Lambda, API Gateway, EC2, RDS, VPC</span>
-              </li>
-              <li className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-amber-300" aria-hidden />
-                <span>Observability and reliability (CloudWatch, X-Ray)</span>
-              </li>
-            </ul>
+        {/* AWS credential card */}
+        <section data-about-block="aws" className="mt-10 w-full">
+          <div className="rounded-2xl p-[2px] bg-gradient-to-br from-amber-400/25 via-orange-500/20 to-yellow-500/25 shadow-xl shadow-black/25" data-hover-card>
+            <div className="relative rounded-[1rem] overflow-hidden bg-white/5 backdrop-blur-xl ring-1 ring-inset ring-white/10 p-6 sm:p-7" data-meta-hover>
+              <div aria-hidden className="pointer-events-none absolute -top-8 right-[-10%] h-40 w-40 rounded-full blur-3xl opacity-20" style={{ background: 'radial-gradient(50% 50% at 50% 50%, rgba(251,191,36,0.8) 0%, rgba(251,191,36,0.0) 70%)' }} />
+              <div className="flex items-center justify-between gap-3">
+                <h3 className="text-white text-[18px] sm:text-[20px] font-semibold">
+                  AWS Certified Solutions Architect (SAA-C03)
+                </h3>
+                <a
+                  href="https://www.credly.com"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="inline-flex h-9 items-center rounded-md border border-white/15 bg-white/10 px-3 text-xs font-medium text-white/90 shadow-sm transition-transform duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0D12]"
+                >
+                  Verify
+                </a>
+              </div>
+              <div className="mt-4 flex flex-wrap items-center gap-2" aria-label="AWS services">
+                {['S3','Lambda','API Gateway','EC2','RDS','VPC','CloudWatch','IAM'].map((chip) => (
+                  <span
+                    key={chip}
+                    className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[12px] sm:text-[13px] text-white/85 ring-1 ring-white/10 transition-transform duration-200 ease-out hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0D12]"
+                  >
+                    {chip}
+                  </span>
+                ))}
+              </div>
+              <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-white/90">
+                <li className="flex items-start gap-2">
+                  <Check className="mt-0.5 h-4 w-4 text-amber-300" aria-hidden />
+                  <span className="text-[14px] leading-[1.6]">
+                    Designed highly available systems that reduced infra cost 25–30% while meeting 99.95% uptime
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="mt-0.5 h-4 w-4 text-amber-300" aria-hidden />
+                  <span className="text-[14px] leading-[1.6]">
+                    Built serverless APIs (Lambda + API Gateway) handling ~2–5M requests/month
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="mt-0.5 h-4 w-4 text-amber-300" aria-hidden />
+                  <span className="text-[14px] leading-[1.6]">
+                    Hardened security with IAM least privilege and VPC segmentation across prod/staging
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="mt-0.5 h-4 w-4 text-amber-300" aria-hidden />
+                  <span className="text-[14px] leading-[1.6]">
+                    Implemented CloudWatch dashboards + X-Ray to cut MTTR from 45m → 12m
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Check className="mt-0.5 h-4 w-4 text-amber-300" aria-hidden />
+                  <span className="text-[14px] leading-[1.6]">
+                    Automated CI/CD to Lambda/EC2 with IaC readiness (Terraform/CloudFormation)
+                  </span>
+                </li>
+              </ul>
+              <p className="mt-5 text-[12px] text-white/60">
+                Serverless and VPC networking across prod + staging, IaC ready.
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* Extra: personal blurb */}
-        <div data-about-extra className="mt-12 text-white/80 max-w-3xl">
-          <p>
+        {/* Personal section (direct on page) */}
+        <div data-about-extra className="mt-12 w-full">
+          <div aria-hidden className="h-1 w-full bg-gradient-to-r from-emerald-400/70 via-indigo-400/60 to-fuchsia-400/70" />
+          <h3 className="mt-4 text-white/90 text-[17px] font-semibold tracking-wide">What do I do outside of work?</h3>
+          <p className="mt-2 text-[14px] sm:text-[15px] leading-relaxed text-white/85 max-w-3xl">
             Beyond systems and infrastructure, I care about teams and the craft. I like aligning product, platform, and people—so shipping ambitious systems stays humane and sustainable.
           </p>
         </div>
 
-        {/* Hobbies */}
+        {/* Outside of work */}
         <div data-about-hobbies className="mt-10">
           <h3 className="text-white font-semibold">Outside of work</h3>
-          <ul className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-white/85">
-            <li className="flex gap-3">
-              <span aria-hidden>🏔️🚴</span>
-              <span>Mountain biking — getting outside and exploring nature on two wheels.</span>
-            </li>
-            <li className="flex gap-3">
-              <span aria-hidden>📸🎥</span>
-              <span>Photography and videography — professional gear; shot events across the U.S.</span>
-            </li>
-            <li className="flex gap-3">
-              <span aria-hidden>🌲</span>
-              <span>Nature exploration — hiking, wandering, and just being out in scenic places.</span>
-            </li>
-            <li className="flex gap-3">
-              <span aria-hidden>🚁</span>
-              <span>Drone photography — capturing aerial shots when possible.</span>
-            </li>
-          </ul>
+          <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {[
+              { label: 'Mountain biking', icon: '🏔️🚴' },
+              { label: 'Photography  ', icon: '📸' },
+              { label: 'Nature exploring', icon: '🌲' },
+              { label: 'Videography', icon: '🎥' },
+            ].map((item) => (
+              <Card key={item.label} className="border-white/10 bg-white/5">
+                <CardContent className="flex items-center gap-2 py-2 text-white/90">
+                  <span aria-hidden>{item.icon}</span>
+                  <span className="text-sm">{item.label}</span>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
 
         {/* Embeds */}
-        <AboutEmbeds className="mt-10" githubUsername="Arthur-Systems" />
+        <AboutEmbeds className="mt-10" />
 
       </div>
     </section>

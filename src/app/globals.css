@@ -191,6 +191,27 @@ html:not(.dark) {
     }
   }
 
+  /* Minimal equalizer line for Now Playing */
+  .eq-line {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: end;
+    gap: 3px;
+    height: 12px;
+  }
+  .eq-line span {
+    width: 4px;
+    background: linear-gradient(to top, rgba(16,185,129,0.6), rgba(16,185,129,0.95));
+    border-radius: 2px;
+    animation-name: eq-bounce;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+  }
+  @keyframes eq-bounce {
+    0%, 100% { transform: scaleY(0.4); opacity: 0.8; }
+    50% { transform: scaleY(1); opacity: 1; }
+  }
+
 }
 
 /* ScrollSmoother styles (only applied when wrapper exists) */

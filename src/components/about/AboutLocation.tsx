@@ -114,7 +114,7 @@ const AboutLocation: React.FC<AboutLocationProps> = ({ className = '' }) => {
           <div className="absolute inset-0">
             {/* Title chip - top-left */}
             <div className="absolute left-3 top-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs text-white/90 shadow-md backdrop-blur-md">
-              <span className="inline-block h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_2px_rgba(52,211,153,0.6)]" />
+              <span className="inline-block h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_1px_rgba(5,150,105,0.35)]" />
               Based in California
             </div>
             {/* Segmented control - bottom-left */}
@@ -134,11 +134,11 @@ const AboutLocation: React.FC<AboutLocationProps> = ({ className = '' }) => {
                 >
                   <ToggleGroupItem value="statewide" className="data-[state=on]:bg-emerald-400 data-[state=on]:text-black">All CA</ToggleGroupItem>
                   <ToggleGroupItem value="bayArea" className="data-[state=on]:bg-emerald-400 data-[state=on]:text-black">Bay Area</ToggleGroupItem>
-                  <ToggleGroupItem value="losAngeles" className="data-[state=on]:bg-emerald-400 data-[state=on]:text-black">Los Angeles</ToggleGroupItem>
+                  <ToggleGroupItem value="losAngeles" className="data-[state=on]:bg-emerald-400 data-[state=on]:text-black">LA</ToggleGroupItem>
                   <ToggleGroupItem value="irvine" className="data-[state=on]:bg-emerald-400 data-[state=on]:text-black">Irvine</ToggleGroupItem>
                 </ToggleGroup>
               </div>
-              <div className="rounded-lg border border-white/10 bg-black/30 px-2.5 py-1 text-[11px] text-white/80 shadow-md backdrop-blur-md">Tap pins • drag to explore</div>
+              <div className="rounded-lg border border-white/10 bg-black/30 px-2.5 py-1 text-[11px] text-white/80 shadow-md backdrop-blur-md">Tap pins</div>
             </div>
           </div>
         )}

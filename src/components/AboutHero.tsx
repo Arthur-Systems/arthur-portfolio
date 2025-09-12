@@ -43,7 +43,7 @@
  */
 
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion, cubicBezier } from 'framer-motion';
 import {
   CheckCircle2,
   Gauge,
@@ -90,7 +90,7 @@ function classNames(...classes: Array<string | false | undefined>): string {
   return classes.filter(Boolean).join(' ');
 }
 
-const baseEase = [0.22, 1, 0.36, 1];
+const baseEase = cubicBezier(0.22, 1, 0.36, 1);
 
 const fadeUp = (index = 0, distance = 12) => ({
   hidden: { opacity: 0, y: distance },
@@ -113,7 +113,7 @@ const AboutHero: React.FC<AboutHeroProps> = ({
   imageSrc = DEFAULT_IMAGE_SRC,
   imageAlt = DEFAULT_IMAGE_ALT,
   onPrimaryCtaHref = '#contact',
-  onSecondaryCtaHref = '#resume',
+  onSecondaryCtaHref = '/resume.pdf',
   showCtas = true,
 }) => {
   const prefersReduced = useReducedMotion();
