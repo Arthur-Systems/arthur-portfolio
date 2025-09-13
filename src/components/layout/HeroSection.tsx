@@ -45,7 +45,7 @@ export const HeroSection = () => {
             {/* Center: nav */}
             <nav className="hidden md:flex items-center gap-6 text-sm text-white/70">
               <a href="#about" className="hover:text-white transition-colors">About</a>
-              <a href="#work" className="hover:text-white transition-colors">Work</a>
+              <a href="#Location" className="hover:text-white transition-colors">Location</a>
               <a href="#services" className="hover:text-white transition-colors">Services</a>
               <a href="#contact" className="hover:text-white transition-colors">Contact</a>
               <a href="/resume.pdf" className="hover:text-white transition-colors">Resume</a>

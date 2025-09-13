@@ -24,6 +24,8 @@ export default function Home() {
         </section>
       </ScrollReveal>
       <SkillsMarquee />
+      {/* Contact anchor for in-page nav */}
+      <div id="contact" className="h-0" />
     </div>
   );
 }

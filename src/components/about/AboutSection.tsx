@@ -109,6 +109,7 @@ From on device inference to cloud APIs, I build end to end AI systems that scale
 
         {/* Spotlight: Location (full-width subsection) */}
         <section
+          id="Location"
           data-about-block="location"
           className="mt-10 w-full rounded-2xl md:rounded-3xl overflow-hidden bg-[radial-gradient(120%_100%_at_0%_0%,rgba(34,211,238,0.12),transparent_60%),radial-gradient(120%_100%_at_100%_100%,rgba(99,102,241,0.12),transparent_60%)]"
           data-reveal
@@ -119,7 +120,7 @@ From on device inference to cloud APIs, I build end to end AI systems that scale
         </section>
 
         {/* AWS credential card */}
-        <section data-about-block="aws" className="mt-10 w-full" data-reveal>
+        <section id="AWS" data-about-block="aws" className="mt-10 w-full" data-reveal>
           <div className="rounded-2xl p-[2px] bg-gradient-to-br from-amber-400/25 via-orange-500/20 to-yellow-500/25 shadow-xl shadow-black/25" data-hover-card>
             <div className="relative rounded-[1rem] overflow-hidden bg-white/5 backdrop-blur-xl ring-1 ring-inset ring-white/10 p-6 sm:p-7" data-meta-hover>
               <div aria-hidden className="pointer-events-none absolute -top-8 right-[-10%] h-40 w-40 rounded-full blur-3xl opacity-20" style={{ background: 'radial-gradient(50% 50% at 50% 50%, rgba(251,191,36,0.8) 0%, rgba(251,191,36,0.0) 70%)' }} />

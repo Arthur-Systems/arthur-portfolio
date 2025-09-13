@@ -15,15 +15,13 @@ export default function BottomCards() {
         <Card className="bg-card/50 backdrop-blur-sm border-border/60" data-reveal>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <span className="text-xl" aria-hidden>👋</span>
-              <span>About</span>
+              <span className="text-xl" aria-hidden></span>
+              <span>Why Me?</span>
             </CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Passionate engineer focused on end-to-end AI systems — from on-device
-              inference to cloud APIs. I love crafting performant, resilient
-              experiences that feel alive.
+            I’m an AI and full-stack engineer who turns ideas into dependable, human-centered products. At ArteraAI and MetafoodX I built computer-vision systems and scalable cloud services that are fast, observable, and easy to maintain. I bring pragmatic execution, clean design, and a habit of turning ambiguous problems into measurable wins.
             </p>
           </CardContent>
         </Card>
