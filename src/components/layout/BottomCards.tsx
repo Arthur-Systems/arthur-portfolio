@@ -16,12 +16,12 @@ export default function BottomCards() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <span className="text-xl" aria-hidden></span>
-              <span>Why Me?</span>
+              <span>👥 Why Me?</span>
             </CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-sm text-muted-foreground leading-relaxed">
-            I’m an AI and full-stack engineer who turns ideas into dependable, human-centered products. At ArteraAI and MetafoodX I built computer-vision systems and scalable cloud services that are fast, observable, and easy to maintain. I bring pragmatic execution, clean design, and a habit of turning ambiguous problems into measurable wins.
+            I’m an AI and full-stack engineer who turns ideas into dependable, human-centered products. I bring pragmatic execution, clean design, and a habit of turning ambiguous problems into measurable wins.
             </p>
           </CardContent>
         </Card>
