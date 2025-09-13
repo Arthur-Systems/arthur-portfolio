@@ -192,13 +192,12 @@ From on device inference to cloud APIs, I build end to end AI systems that scale
           <div aria-hidden className="h-1 w-full bg-gradient-to-r from-emerald-400/70 via-indigo-400/60 to-fuchsia-400/70" />
           <h3 className="mt-4 text-white/90 text-[17px] font-semibold tracking-wide">What do I do outside of work?</h3>
           <p className="mt-2 text-[14px] sm:text-[15px] leading-relaxed text-white/85 max-w-3xl">
-            Beyond systems and infrastructure, I care about teams and the craft. I like aligning product, platform, and people—so shipping ambitious systems stays humane and sustainable.
           </p>
         </div>
 
         {/* Outside of work */}
         <div data-about-hobbies className="mt-10">
-          <h3 className="text-white font-semibold">Outside of work</h3>
+          {/* <h3 className="text-white font-semibold">Outside of work</h3> */}
           <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
               { label: 'Mountain biking', icon: '🏔️🚴' },
