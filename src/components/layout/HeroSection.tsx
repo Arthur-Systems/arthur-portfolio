@@ -90,6 +90,7 @@ export const HeroSection = () => {
             <a
               href="/tech"
               className="px-6 sm:px-7 py-3 rounded-full bg-white/10 border border-white/15 text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/15 hover:border-white/25 inline-flex items-center gap-2"
+              data-interactive
             >
               <span>View Work</span>
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -97,6 +98,7 @@ export const HeroSection = () => {
             <a
               href="mailto:arthur@example.com"
               className="px-6 sm:px-7 py-3 rounded-full border border-white/20 text-white/90 hover:text-white hover:border-white/40 transition-all duration-300 inline-flex items-center gap-2"
+              data-interactive
             >
               <Mail className="h-4 w-4" aria-hidden="true" />
               <span>Contact Me</span>

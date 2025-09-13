@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef } from 'react';
+import { useAutoReveal } from '@/hooks/useAutoReveal';
 import AboutPhoto from './AboutPhoto';
 import AboutHighlights from './AboutHighlights';
 import AboutEmbeds from './AboutEmbeds';
@@ -25,6 +26,8 @@ export const AboutSection: React.FC = () => {
       killAboutFx();
     };
   }, [reduced]);
+
+  useAutoReveal({ root: rootRef.current as unknown as HTMLElement | null });
 
   return (
     <section
@@ -56,25 +59,25 @@ export const AboutSection: React.FC = () => {
             <h2
               data-about-h2
               className="text-[clamp(2rem,5vw,3.25rem)] font-extrabold tracking-tight bg-gradient-to-r from-cyan-300 via-indigo-300 to-fuchsia-300 bg-clip-text text-transparent font-sora"
+              data-reveal
             >
-              About Arthur
+              About Me
             </h2>
             <div className="mt-2 h-px w-28 bg-gradient-to-r from-cyan-400/70 via-indigo-400/60 to-transparent" aria-hidden />
-            <p className="mt-3 text-sm text-white/70 font-inter">
-              Backend-focused Software Engineer — AI • Cloud • Real-time Systems
-            </p>
+
             <p
               data-about-intro
               className="mt-5 font-inter text-[clamp(1rem,1.05vw,1.125rem)] leading-relaxed text-white/85 max-w-[65ch]"
+              data-reveal
             >
-              Building scalable AI and cloud systems that empower human progress. I help teams deliver resilient, low-latency platforms—measured, observable, and maintainable—so companies can ship faster without trading off quality.
-            </p>
+From on device inference to cloud APIs, I build end to end AI systems that scale. I help teams ship faster with platforms that are resilient, measurable, and easy to maintain.            </p>
 
             <div className="mt-8">
               <div
                 className="rounded-2xl p-[2px] bg-gradient-to-br from-cyan-400/25 via-indigo-500/20 to-fuchsia-500/25 shadow-xl shadow-black/25"
                 data-hover-card
                 data-about-goals
+                data-reveal
               >
                 <div className="rounded-[1rem] bg-white/5 backdrop-blur-xl ring-1 ring-inset ring-white/10 p-5">
                   <h3 className="text-white font-semibold">Goals</h3>
@@ -108,6 +111,7 @@ export const AboutSection: React.FC = () => {
         <section
           data-about-block="location"
           className="mt-10 w-full rounded-2xl md:rounded-3xl overflow-hidden bg-[radial-gradient(120%_100%_at_0%_0%,rgba(34,211,238,0.12),transparent_60%),radial-gradient(120%_100%_at_100%_100%,rgba(99,102,241,0.12),transparent_60%)]"
+          data-reveal
         >
           <div className="container mx-auto max-w-6xl px-6 py-10 md:py-14">
             <AboutLocation className="w-full" />
@@ -115,7 +119,7 @@ export const AboutSection: React.FC = () => {
         </section>
 
         {/* AWS credential card */}
-        <section data-about-block="aws" className="mt-10 w-full">
+        <section data-about-block="aws" className="mt-10 w-full" data-reveal>
           <div className="rounded-2xl p-[2px] bg-gradient-to-br from-amber-400/25 via-orange-500/20 to-yellow-500/25 shadow-xl shadow-black/25" data-hover-card>
             <div className="relative rounded-[1rem] overflow-hidden bg-white/5 backdrop-blur-xl ring-1 ring-inset ring-white/10 p-6 sm:p-7" data-meta-hover>
               <div aria-hidden className="pointer-events-none absolute -top-8 right-[-10%] h-40 w-40 rounded-full blur-3xl opacity-20" style={{ background: 'radial-gradient(50% 50% at 50% 50%, rgba(251,191,36,0.8) 0%, rgba(251,191,36,0.0) 70%)' }} />
@@ -137,6 +141,7 @@ export const AboutSection: React.FC = () => {
                   <span
                     key={chip}
                     className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[12px] sm:text-[13px] text-white/85 ring-1 ring-white/10 transition-transform duration-200 ease-out hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B0D12]"
+                    data-interactive
                   >
                     {chip}
                   </span>
@@ -182,7 +187,7 @@ export const AboutSection: React.FC = () => {
         </section>
 
         {/* Personal section (direct on page) */}
-        <div data-about-extra className="mt-12 w-full">
+        <div data-about-extra className="mt-12 w-full" data-reveal>
           <div aria-hidden className="h-1 w-full bg-gradient-to-r from-emerald-400/70 via-indigo-400/60 to-fuchsia-400/70" />
           <h3 className="mt-4 text-white/90 text-[17px] font-semibold tracking-wide">What do I do outside of work?</h3>
           <p className="mt-2 text-[14px] sm:text-[15px] leading-relaxed text-white/85 max-w-3xl">

@@ -1,8 +1,10 @@
 import { HeroSection } from '@/components/layout/HeroSection';
-import { InfoPanels } from '@/components/layout/InfoPanels';
+// import { InfoPanels } from '@/components/layout/InfoPanels';
 import AboutSection from '@/components/about/AboutSection';
 // Removed 3D orb visual
 import ScrollReveal from '@/components/ScrollReveal';
+import BottomCards from '@/components/layout/BottomCards';
+import SkillsMarquee from '@/components/layout/SkillsMarquee';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -18,9 +20,10 @@ export default function Home() {
       <AboutSection />
       <ScrollReveal direction="up">
         <section>
-          <InfoPanels />
+          <BottomCards />
         </section>
       </ScrollReveal>
+      <SkillsMarquee />
     </div>
   );
 }

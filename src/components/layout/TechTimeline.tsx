@@ -350,6 +350,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
               <span
                 key={tech}
                 className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium"
+                data-interactive
               >
                 {tech}
               </span>

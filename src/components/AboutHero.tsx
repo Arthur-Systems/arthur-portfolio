@@ -180,7 +180,7 @@ const AboutHero: React.FC<AboutHeroProps> = ({
               variants={fadeUp(1, 10)}
               className="mt-3 font-sora text-4xl sm:text-5xl font-extrabold tracking-tight"
             >
-              About Arthur
+              About Me
             </motion.h1>
 
             {/* Paragraph */}
@@ -188,7 +188,7 @@ const AboutHero: React.FC<AboutHeroProps> = ({
               variants={fadeUp(2, 10)}
               className="mt-4 max-w-[65ch] font-inter text-base sm:text-lg leading-relaxed text-white/85"
             >
-              Building scalable AI and cloud systems that empower human progress. I help teams deliver resilient, low-latency platforms—measured, observable, and maintainable—so companies can ship faster without trading off quality.
+              I build end to end AI and cloud platforms that are resilient, low latency, observable, and easy to maintain, so teams can move quickly without giving up quality.
             </motion.p>
 
             {/* Skill chips */}

@@ -18,8 +18,8 @@ export const AboutPhoto: React.FC<AboutPhotoProps> = ({ className = '' }) => {
       className={`relative rounded-2xl p-[2px] shadow-xl shadow-black/30 bg-gradient-to-br from-teal-400/20 via-indigo-500/15 to-violet-500/20 will-change-transform tilt-3d ${className}`}
       aria-label="Portrait of Arthur Wei"
     >
-      {/* Inner glass card */}
-      <div className="relative overflow-hidden rounded-[1rem] bg-white/5 backdrop-blur-xl ring-1 ring-inset ring-white/10 card-elevate" data-hover-card>
+      {/* Inner glass card (no hover-tilt to avoid conflict with outer micro-tilt) */}
+      <div className="relative overflow-hidden rounded-[1rem] bg-white/5 backdrop-blur-xl ring-1 ring-inset ring-white/10 card-elevate">
         {/* Shine sweep overlay (animated via anime.js) */}
         <span
           data-shine
