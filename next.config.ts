@@ -31,8 +31,6 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['gsap'],
   },
   
-  // Server external packages
-  serverExternalPackages: ['@prisma/client'],
   
   // Allow cross-origin requests in development
   allowedDevOrigins: ['0.0.0.0'],

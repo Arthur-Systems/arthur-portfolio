@@ -1,124 +1,123 @@
-# 🚀 Cutting-Edge Next.js Portfolio
+# My Portfolio
 
-A modern, high-performance portfolio built with the latest web technologies and frameworks.
+A modern, accessible, and fast personal site powered by Next.js 15 with a clean design system, subtle motion, and strong SEO/A11y defaults.
 
-## ✨ Cutting-Edge Technologies
+## Table of Contents
 
-### 🎯 **Core Framework**
-- **Next.js 15.4.6** - Latest version with App Router
-- **React 19** - Just released with concurrent features
-- **TypeScript 5.9.2** - Latest version with strict type checking
+* [Features](#features)
+* [Tech Stack](#tech-stack)
+* [Getting Started](#getting-started)
+* [Scripts](#scripts)
+* [Environment Variables](#environment-variables)
+* [Project Structure](#project-structure)
+* [UI & Motion](#ui--motion)
+* [Subdomain Setup](#subdomain-setup)
+* [Deploying to Vercel](#deploying-to-vercel)
+* [Performance & Monitoring](#performance--monitoring)
+* [Security](#security)
+* [Roadmap](#roadmap)
 
-### 🎨 **Styling & CSS**
-- **Tailwind CSS 4** - Latest major version with significant improvements
-- **PostCSS** with advanced plugins:
-  - `postcss-preset-env` - Future CSS features
-  - `postcss-nesting` - CSS nesting support
-  - `autoprefixer` - Automatic vendor prefixes
-  - `cssnano` - CSS minification (production)
+---
 
-### 🔧 **Development Tools**
-- **ESLint 9** - Latest flat config format
-- **Prettier** - Code formatting
-- **SWC** - Ultra-fast JavaScript/TypeScript compiler
-- **Bundle Analyzer** - Webpack bundle analysis
+## Features
 
-### 🗄️ **Database & ORM**
-- **Prisma 6.11.1** - Latest version with type-safe database access
-- **SQLite** - Lightweight database
+* **App Router + React Server Components** with **Partial Prerendering (PPR)** for top-tier performance.
+* **Design system** with Tailwind, Radix primitives, shadcn/ui, and Lucide icons.
+* **Elegant motion** using GSAP and Framer Motion with full reduced-motion support.
+* **Company-facing hero** with subtle parallax/blade highlight (DOM-only).
+* **SEO & social**: metadata, sitemap, robots, and OG image routes.
+* **Subdomain-based sections** (photo/video/tech) locally and in production.
 
-### 🎭 **Animation**
-- **GSAP 3.13.0** - Professional animation library
-- **Framer Motion 12.23.2** - Production-ready motion library
+## Tech Stack
 
-### 🎪 **UI Components**
-- **Radix UI** - Unstyled, accessible components
-- **shadcn/ui** - Beautiful component library
-- **Lucide React** - Beautiful icons
+**Core**
 
-### 📊 **State Management & Data**
-- **Zustand 5.0.7** - Lightweight state management
-- **TanStack Query 5.84.1** - Powerful data fetching
-- **Zod 4.0.15** - TypeScript-first schema validation
+* Next.js **15.4.6** (App Router), React **19**, TypeScript **5.9.2**
 
-### 🚀 **Performance & Optimization**
-- **Next.js Bundle Analyzer** - Analyze bundle size
-- **Terser** - JavaScript minification
-- **Compression** - Gzip compression
-- **Image Optimization** - WebP/AVIF support
-- **Code Splitting** - Automatic chunk splitting
+**Styling**
 
-### 🔒 **Security & Headers**
-- **Security Headers** - XSS protection, HSTS, etc.
-- **CORS Configuration** - Cross-origin resource sharing
-- **Content Security Policy** - XSS protection
+* Tailwind CSS **4**, PostCSS (`postcss-preset-env`, `postcss-nesting`, `autoprefixer`, `cssnano`)
 
-## 🛠️ **Advanced Features**
+**Data & State**
 
-### ⚡ **Performance Optimizations**
-- **Partial Prerendering (PPR)** - Next.js 15 feature
-- **React Server Components** - Server-side rendering
-- **Turbo** - Incremental compilation
-- **Optimized Imports** - Tree-shaking for large libraries
+* TanStack Query **5.84.1**, Zustand **5.0.7**, Zod **4.0.15**
 
-### 🎨 **Modern CSS Features**
-- **CSS Nesting** - Native CSS nesting support
-- **Custom Properties** - CSS variables
-- **Color Mix** - Advanced color manipulation
-- **Logical Properties** - Modern layout properties
+**UI & Motion**
 
-### 🔧 **Development Experience**
-- **Hot Module Replacement** - Fast development
-- **Type Checking** - Strict TypeScript configuration
-- **Code Formatting** - Prettier integration
-- **Linting** - ESLint with custom rules
+* Radix UI, shadcn/ui, Lucide React
+* GSAP **3.13.0**, Framer Motion **12.23.2**
 
-## 📦 **Available Scripts**
+**Tooling & Perf**
+
+* ESLint **9** (flat config), Prettier, SWC, Next.js Bundle Analyzer, Terser
+
+> Versions shown are the versions this repo is tested with.
+
+---
+
+## Getting Started
+
+```bash
+# 1) Install
+npm install
+
+# 2) Run dev server
+npm run dev
+
+# 4) Production build
+npm run build
+npm run start
+```
+
+## Scripts
 
 ```bash
 # Development
-npm run dev                    # Start development server
-npm run dev:custom            # Custom development with nodemon
+npm run dev             # Start dev server
+npm run dev:custom      # Custom dev (nodemon)
 
-# Building
-npm run build                 # Production build
-npm run build:analyze        # Build with bundle analysis
+# Build
+npm run build           # Production build
+npm run build:analyze   # Build + bundle analysis
 
-# Code Quality
-npm run lint                  # Run ESLint
-npm run lint:fix             # Fix ESLint issues
-npm run format               # Format code with Prettier
-npm run format:check         # Check code formatting
-npm run type-check           # TypeScript type checking
+# Quality
+npm run lint            # ESLint
+npm run lint:fix        # ESLint (fix)
+npm run format          # Prettier write
+npm run format:check    # Prettier check
+npm run type-check      # TS type-check
 
-# Database
-npm run db:push              # Push schema to database
-npm run db:generate          # Generate Prisma client
-npm run db:migrate           # Run database migrations
-npm run db:reset             # Reset database
-npm run db:studio            # Open Prisma Studio
-
-# Production
-npm run start                # Start production server
 ```
 
-## ☁️ Deploying to Vercel
+## Project Structure
 
-- Set the following Environment Variables in Vercel → Project → Settings → Environment Variables:
-  - `NEXT_PUBLIC_SITE_URL` = your production URL (e.g., https://arthurwei.com)
-  - `DATABASE_URL` = your managed DB connection string (if using Prisma)
-- Prisma: The build runs `prisma generate` via `postinstall`. Run migrations against your managed DB using CI/CD or a one-off job; do not run `migrate` during Vercel build.
-- API routes under `src/app/api/*` run as serverless or edge (your `/api/og` is `runtime='edge'`).
-- The Socket.IO server in `server.ts` is not used on Vercel. If you need realtime, use an Edge WebSocket function or a managed provider (Ably, Pusher) or host Socket.IO separately.
-- Ensure `NEXT_PUBLIC_SITE_URL` is set so OG/Twitter cards, `robots.ts`, and `sitemap.ts` render absolute URLs.
+```
+src/
+  app/
+    (routes)/
+    api/
+      og/               # runtime='edge' example
+  components/
+    hero/
+      HeroBackground.tsx
+    ScrollReveal.tsx
+  lib/
+    heroFx.ts           # initHeroFx / killHeroFx
+    utils/
+  styles/
+    globals.css
+public/
+```
 
-## 🎞️ Scroll Reveal Transitions
+---
 
-- `ScrollReveal` provides a curtain-style reveal between sections using CSS `clip-path` driven by GSAP ScrollTrigger scrub. The next section emerges while the current recedes; no jump cuts.
-- Reduced motion: minimal ≤150ms fade/slide via IntersectionObserver, no pin/pin-spacer.
-- `killAllScrollFx()` utility kills all ScrollTriggers/timelines and removes pin spacers; wired before route transitions.
+## UI & Motion
 
-Usage:
+### Scroll Reveal Transitions
+
+Curtain-style reveals driven by GSAP ScrollTrigger (scrub), with a reduced-motion fallback (≤150ms fade/slide via IntersectionObserver).
+
+**Usage**
 
 ```tsx
 import ScrollReveal from '@/components/ScrollReveal';
@@ -129,214 +128,100 @@ import ScrollReveal from '@/components/ScrollReveal';
 </ScrollReveal>
 ```
 
-Props:
-- direction: 'up' | 'down' | 'left' | 'right' (default 'up')
-- ease: GSAP ease string (default 'none')
-- accentClass: optional className for theming the incoming layer
+**Props**
 
-## 🧭 Hero FX
+* `direction`: `'up' | 'down' | 'left' | 'right'` (default `'up'`)
+* `ease`: GSAP ease string (default `'none'`)
+* `accentClass`: optional class for theming the incoming layer
 
-- New hero is DOM-only with a blade-reveal highlight and parallax lines. No WebGL.
-- Tweak strength/colors via CSS variables in `globals.css` and component inline styles.
-- API in `src/lib/heroFx.ts`:
-  - `initHeroFx(el)` initializes load, pointer, and scroll effects.
-  - `killHeroFx()` kills timelines, ScrollTriggers, and listeners.
+**Utilities**
 
-## 🧠 Company-Facing Hero Prompt (for Cursor/Agentic AI)
+* `killAllScrollFx()` tears down ScrollTriggers, timelines, and pin spacers (call before route transitions).
 
-```
-You are a senior Next.js + Tailwind + GSAP (DOM-only) engineer and brand designer.
+### Hero FX (DOM-only)
 
-Objective
-Redesign my HERO so it’s company-facing (not freelancer-y), fast, and reliable. Lead with:
-  H1: “Hi, I’m Arthur Wei”
-  Tagline: “Backend-focused Software Engineer — AI • Cloud • Real-time Systems”
-Use my details below. Do NOT include any “open to roles / available for work” language.
+* Blade-reveal highlight and gentle parallax lines (no WebGL).
+* Tuned with CSS variables in `globals.css`.
+* `lib/heroFx.ts`: `initHeroFx(el)`, `killHeroFx()` to cleanly start/stop effects.
 
-My details (use verbatim where appropriate)
-- Name: Arthur Wei
-- Role/tagline: Backend-focused Software Engineer — AI • Cloud • Real-time Systems
-- One-liner: Building scalable AI and cloud systems that empower human progress.
-- Location: SF Bay Area
-- Credential: AWS Solutions Architect (SAA-C03)
-- Focus chips:
-  • AI pipelines & computer vision
-  • High-performance & distributed systems
-  • Secure, reliable cloud services
-  • Human-centered innovation
+<details>
+<summary>Company-Facing Hero Prompt (for Cursor/Agentic AI)</summary>
 
-Constraints
-- Stack: Next.js (App Router), TypeScript, Tailwind. Animations: GSAP for DOM only (no Three.js/WebGL; no ScrollTrigger pinning).
-- Keep it lightweight, accessible, and SEO-friendly. Respect prefers-reduced-motion.
+Use the prompt in `/docs/company-hero-prompt.md` to generate a recruiter-friendly hero with:
 
-What to build
-1) Hero layout
-   - Top row: small “AW” brand mark (left), compact nav (About • Work • Services • Contact • Resume). NO status pill.
-   - Headline block (centered):
-     • H1: “Hi, I’m Arthur Wei”
-     • H2 (strong tagline): the Role/tagline above
-     • Supporting sentence: the One-liner above
-     • Chips row: the 4 focus areas as soft capsules
-   - CTAs (company-oriented): “View Work” (primary), “Resume”, “Email”.
-   - Optional small metadata row: “SF Bay Area” and “AWS Certified” pills.
+* H1: “Hi, I’m Arthur Wei”
+* H2: “Backend-focused Software Engineer — AI • Cloud • Real-time Systems”
+* Body: “Building scalable AI and cloud systems that empower human progress.”
+* Chips: AI pipelines & CV • High-performance & distributed systems • Secure, reliable cloud services • Human-centered innovation
+* CTAs: View Work • Resume • Email
+* Meta: SF Bay Area • AWS Certified
 
-2) “Wow” effect (safe and subtle)
-   - Choose ONE:
-     A) Diagonal **blade highlight** sweeping across the H1 using CSS mask/clip-path and a throttled GSAP tween on mousemove.
-     B) **Layered SVG wave lines** behind the hero with gentle parallax (±8px) on scroll; no pinning.
-   - Keep motion elegant; no particle spam; must run 60fps on desktop/mobile.
-
-3) Visual system
-   - Dark-first gradient background (teal → indigo → violet) with light noise/vignette for depth.
-   - Typography via `next/font`: Inter for headings/UI; JetBrains Mono for numbers if needed.
-   - Rounded-xl components, subtle shadows, 200–250ms transitions, AA contrast minimum.
-
-4) Implementation
-   - Update/replace `HeroSection.tsx`.
-   - Add `components/hero/HeroBackground.tsx` (SVG lines/gradient).
-   - Add `lib/heroFx.ts` exporting `initHeroFx(root)` and `killHeroFx()`.
-   - No global pinning. On unmount or route change, **kill all timelines**, remove masks, and clean listeners (nav can call `killHeroFx()` before navigation).
-
-5) Performance & a11y
-   - Reserve space: `min-h-[88vh]` to keep CLS ≤ 0.03.
-   - Keyboard focus states visible; semantic H1/H2 order.
-   - Reduced motion: disable parallax/sweep; keep a ≤120ms fade/slide.
-
-Copy blocks (use exactly)
-- H1: Hi, I’m Arthur Wei
-- H2: Backend-focused Software Engineer — AI • Cloud • Real-time Systems
-- Body: Building scalable AI and cloud systems that empower human progress.
-- Chips: (list the 4 focus areas above)
-- CTAs: View Work • Resume • Email
-- Meta pills: SF Bay Area • AWS Certified
-
-Acceptance criteria
-- Immediate brand clarity; no freelancer language or “open to roles.”
-- Smooth, premium motion; zero console errors; no GSAP leaks after navigating away.
-- Lighthouse (mobile): Performance ≥ 85, A11y ≥ 95, Best Practices ≥ 95, SEO ≥ 95.
-- Visual layout unchanged across reloads; no layout shift; responsive from 360px to 1920px.
-
-Deliverables
-- Implemented `HeroSection.tsx`, `HeroBackground.tsx`, and `lib/heroFx.ts`.
-- Hooked teardown (`killHeroFx()`) into route transition cleanup.
-- Brief notes on how to tweak color intensity and disable motion.
-```
-
-## 🚀 **Getting Started**
-
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-2. **Set up the database:**
-   ```bash
-   npm run db:generate
-   npm run db:push
-   ```
-
-3. **Start development:**
-   ```bash
-   npm run dev
-   ```
-
-4. **Build for production:**
-   ```bash
-   npm run build
-   npm run start
-   ```
-
-## 🌐 **Subdomain Setup**
-
-### **Development (Local)**
-For local development, you can access subdomains by modifying your `/etc/hosts` file:
-
-```bash
-# Add these lines to /etc/hosts
-127.0.0.1 photo.localhost
-127.0.0.1 video.localhost  
-127.0.0.1 tech.localhost
-```
-
-Then access:
-- **Photography**: `http://photo.localhost:3000`
-- **Video**: `http://video.localhost:3000`
-- **Technology**: `http://tech.localhost:3000`
-
-### **Production**
-For production deployment, set up DNS records:
-
-```
-# DNS Records
-photo.yourdomain.com  →  CNAME  →  yourdomain.com
-video.yourdomain.com  →  CNAME  →  yourdomain.com
-tech.yourdomain.com   →  CNAME  →  yourdomain.com
-```
-
-### **Vercel Deployment**
-If using Vercel, add custom domains in your project settings:
-- `photo.yourdomain.com`
-- `video.yourdomain.com`
-- `tech.yourdomain.com`
-
-## 📊 **Performance Monitoring**
-
-- **Bundle Analysis:** Run `npm run build:analyze` to analyze bundle size
-- **Lighthouse:** Built-in performance auditing
-- **Core Web Vitals:** Optimized for all metrics
-
-## 🔧 **Configuration Files**
-
-- `next.config.ts` - Next.js configuration with optimizations
-- `tailwind.config.ts` - Tailwind CSS configuration
-- `postcss.config.mjs` - PostCSS plugins
-- `tsconfig.json` - TypeScript configuration
-- `eslint.config.mjs` - ESLint configuration
-- `.prettierrc` - Prettier formatting rules
-
-## 🌟 **Cutting-Edge Features**
-
-### **Next.js 15 Features**
-- App Router with Server Components
-- Partial Prerendering (PPR)
-- Turbo for faster builds
-- Optimized package imports
-
-### **React 19 Features**
-- Concurrent features
-- Automatic batching
-- Improved suspense
-- Better error boundaries
-
-### **TypeScript 5 Features**
-- Latest ECMAScript target (ES2022)
-- Strict type checking
-- Advanced type features
-- Bundler module resolution
-
-### **Tailwind CSS 4 Features**
-- Improved performance
-- Better tree-shaking
-- Enhanced JIT compiler
-- Modern CSS features
-
-## 📈 **Performance Metrics**
-
-This project is optimized for:
-- **First Contentful Paint (FCP)** < 1.5s
-- **Largest Contentful Paint (LCP)** < 2.5s
-- **Cumulative Layout Shift (CLS)** < 0.1
-- **First Input Delay (FID)** < 100ms
-
-## 🔮 **Future-Proof Architecture**
-
-Built with modern web standards and designed to evolve with the ecosystem:
-- **ES2022** JavaScript features
-- **CSS Nesting** and modern CSS
-- **Web Components** ready
-- **PWA** capabilities
-- **Micro-frontend** architecture support
+</details>
 
 ---
 
-Built with ❤️ using the latest cutting-edge technologies
+## Subdomain Setup
+
+### Local (hosts file)
+
+```bash
+# /etc/hosts
+127.0.0.1 photo.localhost
+127.0.0.1 video.localhost
+127.0.0.1 tech.localhost
+```
+
+Then visit:
+
+* `http://photo.localhost:3000`
+* `http://video.localhost:3000`
+* `http://tech.localhost:3000`
+
+### Production (DNS)
+
+```
+photo.yourdomain.com  CNAME  yourdomain.com
+video.yourdomain.com  CNAME  yourdomain.com
+tech.yourdomain.com   CNAME  yourdomain.com
+```
+
+---
+
+## Deploying to Vercel
+
+* Set **Environment Variables** (Project → Settings → Environment Variables):
+
+  * `NEXT_PUBLIC_SITE_URL` → e.g., `https://yourdomain.com`
+* API routes under `src/app/api/*` run serverless or edge (e.g., `/api/og` is `runtime='edge'`).
+* **Realtime**: `server.ts` (Socket.IO) isn’t used on Vercel. For realtime, use Edge WebSockets or a provider (Ably/Pusher) or host Socket.IO separately.
+
+---
+
+## Performance & Monitoring
+
+* **Bundle analysis**: `npm run build:analyze`
+* **Core Web Vitals targets**: FCP < 1.5s, LCP < 2.5s, CLS < 0.1, FID < 100ms
+* **Lighthouse goals (mobile)**: Performance ≥ 85, A11y ≥ 95, Best Practices ≥ 95, SEO ≥ 95
+
+**Platform techniques**
+
+* Image optimization (WebP/AVIF), code splitting, tree-shaken imports, SWC transforms, Terser minification.
+
+---
+
+## Security
+
+* Sensible security headers (HSTS, X-Content-Type-Options, Referrer-Policy, etc.)
+* CORS as needed for APIs
+* Content Security Policy (CSP) tuned for fonts, images, and OG routes
+
+---
+
+## Roadmap
+
+* Optional PWA (offline & install prompts)
+* Web-components friendly slots for embeds
+* Edge-native realtime (WebSockets) for live counters/typing indicators
+
+---
+

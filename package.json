@@ -13,15 +13,9 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "type-check": "tsc --noEmit",
-    "db:push": "prisma db push",
-    "db:generate": "prisma generate",
-    "db:migrate": "prisma migrate dev",
-    "db:reset": "prisma migrate reset",
-    "db:studio": "prisma studio",
     "setup:subdomains": "./scripts/setup-subdomains.sh",
     "setup:subdomains:win": "powershell -ExecutionPolicy Bypass -File scripts/setup-subdomains.ps1",
-    "test": "cross-env ROLLUP_NO_NATIVE=1 vitest run",
-    "postinstall": "prisma generate"
+    "test": "cross-env ROLLUP_NO_NATIVE=1 vitest run"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
@@ -32,7 +26,6 @@
     "@fontsource-variable/space-grotesk": "^5.2.8",
     "@hookform/resolvers": "^5.1.1",
     "@mdxeditor/editor": "^3.39.1",
-    "@prisma/client": "^6.11.1",
     "@radix-ui/react-accordion": "^1.2.11",
     "@radix-ui/react-alert-dialog": "^1.1.14",
     "@radix-ui/react-aspect-ratio": "^1.1.7",
@@ -86,7 +79,6 @@
     "next-auth": "^4.24.11",
     "next-intl": "^4.3.4",
     "next-themes": "^0.4.6",
-    "prisma": "^6.11.1",
     "react": "^19.0.0",
     "react-day-picker": "^9.8.0",
     "react-dom": "^19.0.0",

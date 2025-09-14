@@ -2,7 +2,7 @@
 
 This file provides guidance to WARP (warp.dev) when working with code in this repository.
 
-Project: Next.js (App Router) + TypeScript + Tailwind + Prisma + Vitest. A custom Node server (server.ts) integrates Socket.IO in dev/prod when needed.
+Project: Next.js (App Router) + TypeScript + Tailwind + Vitest. A custom Node server (server.ts) integrates Socket.IO in dev/prod when needed.
 
 Key commands (pwsh-friendly)
 - Install deps
@@ -58,14 +58,6 @@ Key commands (pwsh-friendly)
     npm run test -- -t "Calibrating ranges"
     # or interactively: npx vitest -t "pattern"
     ```
-- Database (Prisma, SQLite by default)
-  ```bash path=null start=null
-  npm run db:generate   # generate client
-  npm run db:push       # apply schema to DB
-  npm run db:migrate    # create/apply dev migration
-  npm run db:reset      # destructive: reset DB
-  npm run db:studio     # Prisma Studio
-  ```
 
 URLs and local subdomains
 - App: http://localhost:3000
@@ -101,7 +93,7 @@ Architecture (big picture)
   - server.ts boots Next and attaches Socket.IO at path /api/socketio (dev via npm run dev:custom, prod via npm run start). Socket handlers live in src/lib/socket.ts.
   - API routes include /api/health (simple JSON) and the edge /api/og image generator.
 - Data access
-  - Prisma client is initialized in src/lib/db.ts with a simple global singleton.
+  - Application data is managed through client-side state using TanStack Query and Zustand.
 
 Notes and constraints
 - ESLint flat config enables Next/TypeScript rules but intentionally disables many strictness checks for developer ergonomics; CI guard blocks imports of three/@react-three/* (WebGL stack removed).

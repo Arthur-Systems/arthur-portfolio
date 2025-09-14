@@ -29,7 +29,7 @@ import type { Request, Response } from 'express';
 const app = express();
 
 app.post('/api/tasks', async (req: Request, res: Response) => {
-  const task = await db.collection('tasks').insertOne(req.body);
+  // Handle task creation logic here
   await discordClient.channels.cache.get(process.env.CHANNEL_ID!)?.send(
     'New task created: ' + req.body.title
   );
