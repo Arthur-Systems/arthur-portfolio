@@ -53,8 +53,8 @@ export function initAboutFx(root: HTMLElement) {
     gsap.set(root, { opacity: 0, y: 24 });
     if (photo) gsap.set(photo, { opacity: 0, x: -12, y: 24, rotateX: -6, rotateY: 10, scale: 0.98, transformPerspective: 1000 });
     [h2, body, goals, chips, meta, location, cert, extra, hobbies, embeds].forEach((el) => el && gsap.set(el, { opacity: 0, y: 16 }));
-    // cards slight tilt
-    [goals, location, cert, embeds].forEach((el) => el && gsap.set(el, { rotateX: -3, rotateY: 6, transformPerspective: 1000 }));
+    // cards slight tilt (exclude stable sections like embeds/music)
+    [goals, location, cert].forEach((el) => el && gsap.set(el, { rotateX: -3, rotateY: 6, transformPerspective: 1000 }));
     if (chips) {
       const items = Array.from(chips.children) as HTMLElement[];
       gsap.set(items, { opacity: 0, y: 12 });
@@ -104,7 +104,7 @@ export function initAboutFx(root: HTMLElement) {
       const laterBlocks = [meta, ...spotlightBlocks, embeds].filter(Boolean) as HTMLElement[];
       if (laterBlocks.length) enterTl.to(laterBlocks, { opacity: 1, y: 0, duration: prefersReduced ? 0.12 : 0.45, stagger: prefersReduced ? 0.02 : 0.08 }, '>-0.06');
       if (spotlightBlocks.length && !prefersReduced) enterTl.to(spotlightBlocks, { rotateX: 0, rotateY: 0, duration: prefersReduced ? 0.12 : 0.45, ease: 'power2.inOut', stagger: 0.04 }, '<');
-      if (embeds && !prefersReduced) enterTl.to(embeds, { rotateY: 2, duration: 0.4, ease: 'power2.inOut' }, '<');
+      if (embeds && !prefersReduced && !embeds.hasAttribute('data-stable')) enterTl.to(embeds, { rotateY: 2, duration: 0.4, ease: 'power2.inOut' }, '<');
 
       // trailing extras if present
       const trailing = [extra, hobbies].filter(Boolean) as HTMLElement[];
@@ -116,7 +116,8 @@ export function initAboutFx(root: HTMLElement) {
             if (loaded) microFx = setupMicroFx(photo);
           });
           // Light tilt for all hover cards
-          const handlers = setupCardTilts(hoverCards);
+          const filteredHoverCards = hoverCards.filter((el) => !el.hasAttribute('data-no-tilt'));
+          const handlers = setupCardTilts(filteredHoverCards);
           if (ctx) ctxToCardHandlers.set(ctx, handlers);
         }
       });

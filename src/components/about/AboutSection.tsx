@@ -6,6 +6,7 @@ import AboutPhoto from './AboutPhoto';
 import AboutHighlights from './AboutHighlights';
 import AboutEmbeds from './AboutEmbeds';
 import AboutLocation from './AboutLocation';
+import ContactForm from '@/components/layout/ContactForm';
 import { initAboutFx, killAboutFx } from '@/lib/aboutFx';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { initMetaFx, killMetaFx } from '../../lib/aboutMetaFx';
@@ -187,36 +188,42 @@ From on device inference to cloud APIs, I build end to end AI systems that scale
           </div>
         </section>
 
-        {/* Personal section (direct on page) */}
-        <div data-about-extra className="mt-12 w-full" data-reveal>
-          <div aria-hidden className="h-1 w-full bg-gradient-to-r from-emerald-400/70 via-indigo-400/60 to-fuchsia-400/70" />
-          <h3 className="mt-4 text-white/90 text-[17px] font-semibold tracking-wide">What do I do outside of work?</h3>
-          <p className="mt-2 text-[14px] sm:text-[15px] leading-relaxed text-white/85 max-w-3xl">
-          </p>
+        {/* Hobbies (primary) and Music (secondary) */}
+        <div className="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-6" data-reveal>
+          {/* Left: Hobbies (8 cols) */}
+          <section className="lg:col-span-8" aria-label="Hobbies">
+            <div className="eyebrow">Hobbies</div>
+            <h3 className="section-title mt-1">Things I enjoy</h3>
+            <div className="mt-4 grid grid-cols-2 md:grid-cols-3 gap-3">
+              {[
+                { label: 'Mountain biking', icon: '🚵', fact: '~15 trails' },
+                { label: 'Photography', icon: '📸', fact: '>1k photos' },
+                { label: 'Nature exploring', icon: '🌲', fact: 'weekly' },
+                { label: 'Videography', icon: '🎥', fact: 'short films' },
+                { label: 'Cooking', icon: '🍳', fact: 'weeknights' },
+                { label: 'Reading', icon: '📚', fact: 'non‑fiction' },
+              ].slice(0, 6).map((item) => (
+                <div key={item.label} className="flex items-center gap-2">
+                  <span aria-hidden className="text-base">{item.icon}</span>
+                  <div className="flex flex-col">
+                    <span className="chip">{item.label}</span>
+                    <span className="text-[11px] text-white/50 mt-1">{item.fact}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Right: Music (4 cols) */}
+          <section className="lg:col-span-4" aria-label="Music">
+            <AboutEmbeds />
+          </section>
         </div>
 
-        {/* Outside of work */}
-        <div data-about-hobbies className="mt-10">
-          {/* <h3 className="text-white font-semibold">Outside of work</h3> */}
-          <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {[
-              { label: 'Mountain biking', icon: '🏔️🚴' },
-              { label: 'Photography  ', icon: '📸' },
-              { label: 'Nature exploring', icon: '🌲' },
-              { label: 'Videography', icon: '🎥' },
-            ].map((item) => (
-              <Card key={item.label} className="border-white/10 bg-white/5">
-                <CardContent className="flex items-center gap-2 py-2 text-white/90">
-                  <span aria-hidden>{item.icon}</span>
-                  <span className="text-sm">{item.label}</span>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+        {/* Contact Section (bottom) */}
+        <div id="contact" className="mt-12">
+          <ContactForm />
         </div>
-
-        {/* Embeds */}
-        <AboutEmbeds className="mt-10" />
 
       </div>
     </section>

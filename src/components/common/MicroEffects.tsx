@@ -26,13 +26,13 @@ export function MicroEffects() {
       const ease = reduced ? 'power1.out' : 'power3.out';
 
       const onEnter = () => {
-        gsap.to(el, { y: -2, scale: 1.02, duration, ease });
+        gsap.to(el, { y: -1, scale: 1.03, duration: reduced ? 0.12 : 0.16, ease: 'power2.out' });
       };
       const onLeave = () => {
-        gsap.to(el, { y: 0, scale: 1, duration, ease });
+        gsap.to(el, { y: 0, scale: 1, duration: reduced ? 0.18 : 0.26, ease: 'elastic.out(1, 0.5)' });
       };
       const onDown = () => {
-        gsap.to(el, { scale: 0.98, duration: reduced ? 0.08 : 0.12, ease: 'power2.out' });
+        gsap.to(el, { scale: 0.98, duration: reduced ? 0.06 : 0.08, ease: 'power2.out' });
       };
       const onUp = () => {
         gsap.to(el, { scale: 1.02, duration: reduced ? 0.08 : 0.12, ease: 'power2.out' });

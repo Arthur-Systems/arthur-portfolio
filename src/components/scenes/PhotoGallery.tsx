@@ -2,26 +2,16 @@
 
 import { useRef, useState, useEffect } from 'react';
 import { gsap } from '@/lib/gsapTimelines';
+import { googlePhotosAPI, type PhotoItem } from '@/lib/googlePhotos';
 
-interface PhotoItem {
-  id: string;
-  title: string;
-  description: string;
-  imageUrl: string;
-  exif?: {
-    camera: string;
-    lens: string;
-    settings: string;
-    date: string;
-  };
-}
-
-const samplePhotos: PhotoItem[] = [
+// Fallback photos in case Google Photos API is not configured
+const fallbackPhotos: PhotoItem[] = [
   {
     id: '1',
     title: 'Urban Landscape',
     description: 'City lights at dusk',
     imageUrl: '/api/placeholder/400/600',
+    thumbnailUrl: '/api/placeholder/200/300',
     exif: {
       camera: 'Sony A7III',
       lens: '24-70mm f/2.8',
@@ -34,6 +24,7 @@ const samplePhotos: PhotoItem[] = [
     title: 'Mountain Vista',
     description: 'Sunrise over the peaks',
     imageUrl: '/api/placeholder/600/400',
+    thumbnailUrl: '/api/placeholder/300/200',
     exif: {
       camera: 'Canon R5',
       lens: '16-35mm f/4',
@@ -46,6 +37,7 @@ const samplePhotos: PhotoItem[] = [
     title: 'Street Portrait',
     description: 'Candid moment in the city',
     imageUrl: '/api/placeholder/400/600',
+    thumbnailUrl: '/api/placeholder/200/300',
     exif: {
       camera: 'Fujifilm X-T4',
       lens: '56mm f/1.2',
@@ -58,6 +50,7 @@ const samplePhotos: PhotoItem[] = [
     title: 'Abstract Nature',
     description: 'Patterns in the forest',
     imageUrl: '/api/placeholder/600/400',
+    thumbnailUrl: '/api/placeholder/300/200',
     exif: {
       camera: 'Nikon Z7',
       lens: '105mm f/2.8',
@@ -73,6 +66,9 @@ interface PhotoCardProps {
 }
 
 function PhotoCard({ photo, onClick }: PhotoCardProps) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
   return (
     <div
       onClick={() => onClick(photo)}
@@ -81,14 +77,39 @@ function PhotoCard({ photo, onClick }: PhotoCardProps) {
       tabIndex={0}
     >
       <div className="relative aspect-[2/3] bg-muted">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center text-muted-foreground">
-            <div className="w-16 h-16 bg-muted-foreground/20 rounded-lg flex items-center justify-center mb-4 mx-auto group-hover:scale-105 transition-transform duration-300">
-              <span className="text-2xl">📷</span>
+        {!imageLoaded && !imageError && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center text-muted-foreground">
+              <div className="w-16 h-16 bg-muted-foreground/20 rounded-lg flex items-center justify-center mb-4 mx-auto group-hover:scale-105 transition-transform duration-300">
+                <span className="text-2xl">📷</span>
+              </div>
+              <p className="text-lg font-medium">{photo.title}</p>
             </div>
-            <p className="text-lg font-medium">{photo.title}</p>
           </div>
-        </div>
+        )}
+        
+        {photo.thumbnailUrl && !imageError && (
+          <img
+            src={photo.thumbnailUrl}
+            alt={photo.title}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+              imageLoaded ? 'opacity-100' : 'opacity-0'
+            }`}
+            onLoad={() => setImageLoaded(true)}
+            onError={() => setImageError(true)}
+          />
+        )}
+        
+        {imageError && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center text-muted-foreground">
+              <div className="w-16 h-16 bg-muted-foreground/20 rounded-lg flex items-center justify-center mb-4 mx-auto">
+                <span className="text-2xl">📷</span>
+              </div>
+              <p className="text-lg font-medium">{photo.title}</p>
+            </div>
+          </div>
+        )}
       </div>
       <div className="p-4">
         <p className="text-sm text-muted-foreground line-clamp-2">{photo.description}</p>
@@ -165,15 +186,23 @@ function PhotoLightbox({ photo, onClose }: PhotoLightboxProps) {
           i
         </button>
 
-        {/* Photo placeholder */}
+        {/* Photo */}
         <div className="relative w-full h-full flex items-center justify-center bg-muted">
-          <div className="text-center">
-            <div className="w-96 h-64 bg-muted-foreground/20 rounded-lg flex items-center justify-center mb-4">
-              <span className="text-muted-foreground">Photo: {photo.title}</span>
+          {photo.imageUrl ? (
+            <img
+              src={photo.imageUrl}
+              alt={photo.title}
+              className="max-w-full max-h-full object-contain"
+            />
+          ) : (
+            <div className="text-center">
+              <div className="w-96 h-64 bg-muted-foreground/20 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-muted-foreground">Photo: {photo.title}</span>
+              </div>
+              <h3 className="text-2xl font-bold text-foreground mb-2">{photo.title}</h3>
+              <p className="text-muted-foreground">{photo.description}</p>
             </div>
-            <h3 className="text-2xl font-bold text-foreground mb-2">{photo.title}</h3>
-            <p className="text-muted-foreground">{photo.description}</p>
-          </div>
+          )}
         </div>
 
         {/* EXIF info overlay */}
@@ -202,6 +231,36 @@ function PhotoLightbox({ photo, onClose }: PhotoLightboxProps) {
 
 export default function PhotoGallery() {
   const [selectedPhoto, setSelectedPhoto] = useState<PhotoItem | null>(null);
+  const [photos, setPhotos] = useState<PhotoItem[]>(fallbackPhotos);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchPhotos = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        
+        // Try to fetch from Google Photos API
+        const albumId = process.env.NEXT_PUBLIC_GOOGLE_PHOTOS_ALBUM_ID;
+        
+        if (albumId) {
+          const googlePhotos = await googlePhotosAPI.getPhotosFromAlbum(albumId);
+          if (googlePhotos.length > 0) {
+            setPhotos(googlePhotos);
+          }
+        }
+      } catch (err) {
+        console.error('Failed to fetch photos from Google Photos:', err);
+        setError('Failed to load photos from Google Photos. Showing sample photos.');
+        // Keep fallback photos
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPhotos();
+  }, []);
 
   const handlePhotoSelect = (photo: PhotoItem) => {
     setSelectedPhoto(photo);
@@ -211,13 +270,40 @@ export default function PhotoGallery() {
     setSelectedPhoto(null);
   };
 
+  if (loading) {
+    return (
+      <div className="w-full relative">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {Array.from({ length: 6 }).map((_, index) => (
+            <div key={index} className="rounded-xl overflow-hidden shadow-lg bg-card border border-border">
+              <div className="aspect-[2/3] bg-muted animate-pulse">
+                <div className="w-full h-full bg-muted-foreground/20" />
+              </div>
+              <div className="p-4">
+                <div className="h-4 bg-muted-foreground/20 rounded animate-pulse mb-2" />
+                <div className="h-3 bg-muted-foreground/10 rounded animate-pulse w-3/4" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full relative">
+      {error && (
+        <div className="mb-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-yellow-800">
+          <p className="text-sm">{error}</p>
+        </div>
+      )}
+      
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {samplePhotos.map((p) => (
-          <PhotoCard key={p.id} photo={p} onClick={handlePhotoSelect} />
+        {photos.map((photo) => (
+          <PhotoCard key={photo.id} photo={photo} onClick={handlePhotoSelect} />
         ))}
       </div>
+      
       <PhotoLightbox photo={selectedPhoto} onClose={handleCloseLightbox} />
     </div>
   );

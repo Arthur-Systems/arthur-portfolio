@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Disc3, ExternalLink, Music } from 'lucide-react';
 
 type NowPlayingData = {
@@ -29,18 +29,15 @@ export const AboutEmbeds: React.FC<AboutEmbedsProps> = ({
   playlistUrl,
   nowPlaying,
 }) => {
-  const genres = useMemo(
-    () => ['Electronic', 'Indie', 'Lo-fi', 'Hip-hop', 'House', 'Ambient'],
-    []
-  );
-  const moods = useMemo(
-    () => ['Focus', 'Night drive', 'Weekend', '2010s', '90s', 'Instrumental'],
-    []
-  );
-  const artists = useMemo(
-    () => ['ODESZA', 'Tycho', 'Bonobo', 'The xx', 'Phoebe Bridgers', 'FKJ'],
-    []
-  );
+  const genres = useMemo(() => ['Electronic', 'Indie', 'Lo-fi', 'Hip-hop', 'House', 'Ambient'], []);
+  const eras = useMemo(() => ['2010s', '90s', '2000s', '80s'], []);
+  const moods = useMemo(() => ['Focus', 'Night drive', 'Weekend', 'Instrumental'], []);
+  const artists = useMemo(() => ['ODESZA', 'Tycho', 'Bonobo', 'The xx', 'Phoebe Bridgers', 'FKJ'], []);
+
+  const [showGenresAll, setShowGenresAll] = useState(false);
+  const [showArtistsAll, setShowArtistsAll] = useState(false);
+  const [showMoodsAll, setShowMoodsAll] = useState(false);
+  const [showErasAll, setShowErasAll] = useState(false);
 
   const playlistHref = playlistUrl ?? spotifyProfileUrl;
   const trackTitle = nowPlaying?.title ?? 'Not playing';
@@ -49,22 +46,33 @@ export const AboutEmbeds: React.FC<AboutEmbedsProps> = ({
   const trackUrl = nowPlaying?.url ?? spotifyProfileUrl;
 
   return (
-    <div data-about-embeds className={className}>
+    <div data-about-embeds data-stable className={className}>
       <div
-        className="relative rounded-2xl p-[2px] bg-gradient-to-br from-teal-400/20 via-indigo-500/15 to-violet-500/20 shadow-xl shadow-black/30"
+        className="relative rounded-2xl p-[2px] bg-[hsl(250,20%,10%)]/100 shadow-sm border border-white/10"
         data-hover-card
+        data-no-tilt
       >
-        <div className="rounded-[1rem] overflow-hidden bg-white/5 backdrop-blur-xl ring-1 ring-inset ring-white/10">
-          {/* Header: subtle context */}
-          <div className="flex items-center gap-2 px-4 pt-4">
-            <Music className="h-4 w-4 text-emerald-300" aria-hidden />
-            <div className="text-white/85 text-sm font-medium">Music</div>
+        <div className="rounded-[1rem] overflow-hidden bg-white/5 ring-1 ring-inset ring-white/10">
+          {/* Header */}
+          <div className="flex items-center justify-between gap-2 px-4 pt-4">
+            <div className="flex items-center gap-2">
+              <Music className="h-4 w-4 text-emerald-300" aria-hidden />
+              <div className="eyebrow">Music</div>
+            </div>
+            <a
+              href={playlistHref}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="text-emerald-300 hover:text-emerald-200 text-[13px]"
+            >
+              Open playlist
+            </a>
           </div>
 
           {/* Split layout */}
           <div className="grid grid-cols-1 md:grid-cols-12">
-            {/* Left: Now Playing (40%) */}
-            <div className="md:col-span-5 p-4 pt-3 border-b md:border-b-0 md:border-r border-white/10">
+            {/* Now Playing */}
+            <div className="md:col-span-12 p-4 pt-3 border-b border-white/10">
               {albumArt || nowPlaying ? (
                 <div>
                   <div className="flex items-center gap-3">
@@ -81,19 +89,8 @@ export const AboutEmbeds: React.FC<AboutEmbedsProps> = ({
                       <div className="text-xs text-white/60 truncate">{trackArtist}</div>
                     </div>
                   </div>
-                  <div className="mt-3 h-3">
-                    <div className="eq-line">
-                      {Array.from({ length: 20 }).map((_, i) => (
-                        <span
-                          key={i}
-                          style={{
-                            animationDelay: `${(i % 5) * 90}ms`,
-                            animationDuration: `${900 + (i % 4) * 140}ms`,
-                            height: `${6 + (i % 5) * 2}px`,
-                          }}
-                        />
-                      ))}
-                    </div>
+                  <div className="mt-3 h-1.5 w-full bg-white/10 rounded">
+                    <div className="h-full w-1/3 bg-emerald-300/60 rounded" />
                   </div>
                 </div>
               ) : (
@@ -112,47 +109,59 @@ export const AboutEmbeds: React.FC<AboutEmbedsProps> = ({
               )}
             </div>
 
-            {/* Right: Taste (60%) */}
-            <div className="md:col-span-7 p-4 pt-3">
-              <div className="text-xs text-white/60 mb-2">Top genres</div>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {genres.map((g) => (
-                  <span key={g} className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[12px] text-white/85 ring-1 ring-white/10">
-                    {g}
-                  </span>
-                ))}
-              </div>
+            {/* Taste Profile */}
+            <div className="md:col-span-12 p-4 pt-3">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {/* Genres */}
+                <div>
+                  <div className="eyebrow mb-2">Genres</div>
+                  <div className="flex flex-wrap gap-2">
+                    {(showGenresAll ? genres : genres.slice(0, 3)).map((g) => (
+                      <span key={g} className="chip">{g}</span>
+                    ))}
+                    {!showGenresAll && genres.length > 3 && (
+                      <button className="chip" onClick={() => setShowGenresAll(true)}>+{genres.length - 3}</button>
+                    )}
+                  </div>
+                </div>
 
-              <div className="text-xs text-white/60 mb-2">Favorite artists</div>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-sm text-white/90 mb-4">
-                {artists.map((a) => (
-                  <li key={a} className="truncate">{a}</li>
-                ))}
-              </ul>
+                {/* Artists */}
+                <div>
+                  <div className="eyebrow mb-2">Artists</div>
+                  <div className="flex flex-wrap gap-2">
+                    {(showArtistsAll ? artists : artists.slice(0, 3)).map((a) => (
+                      <span key={a} className="chip">{a}</span>
+                    ))}
+                    {!showArtistsAll && artists.length > 3 && (
+                      <button className="chip" onClick={() => setShowArtistsAll(true)}>+{artists.length - 3}</button>
+                    )}
+                  </div>
+                </div>
 
-              <div className="text-xs text-white/60 mb-2">Moods / decades</div>
-              <div className="flex flex-wrap gap-2">
-                {moods.map((m) => (
-                  <span key={m} className="inline-flex items-center rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-[12px] text-white/85 ring-1 ring-white/10">
-                    {m}
-                  </span>
-                ))}
+                {/* Moods / Eras */}
+                <div>
+                  <div className="eyebrow mb-2">Moods / Eras</div>
+                  <div className="flex flex-wrap gap-2">
+                    {(showMoodsAll ? moods : moods.slice(0, 3)).map((m) => (
+                      <span key={m} className="chip">{m}</span>
+                    ))}
+                    {(showErasAll ? eras : eras.slice(0, 3)).map((e) => (
+                      <span key={e} className="chip">{e}</span>
+                    ))}
+                    {(!showMoodsAll && moods.length > 3) && (
+                      <button className="chip" onClick={() => setShowMoodsAll(true)}>+{moods.length - 3}</button>
+                    )}
+                    {(!showErasAll && eras.length > 3) && (
+                      <button className="chip" onClick={() => setShowErasAll(true)}>+{eras.length - 3}</button>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Footer links */}
-          <div className="border-t border-white/10 bg-white/5 px-4 py-3 flex items-center justify-between">
-            <a
-              href={playlistHref}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="inline-flex items-center gap-1.5 text-[13px] text-emerald-300 hover:text-emerald-200"
-              aria-label="Open playlist"
-            >
-              Open playlist
-              <ExternalLink className="h-3.5 w-3.5" aria-hidden />
-            </a>
+          <div className="border-t border-white/10 bg-white/5 px-4 py-3 flex items-center justify-end">
             <div className="flex items-center gap-3 text-[12px]">
               <a href={spotifyProfileUrl} target="_blank" rel="noreferrer noopener" className="text-white/70 hover:text-white/90 inline-flex items-center gap-1">
                 Spotify

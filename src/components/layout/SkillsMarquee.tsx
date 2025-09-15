@@ -19,13 +19,15 @@ export default function SkillsMarquee() {
     const tl = gsap.from(el, {
       opacity: 0,
       y: 30,
-      duration: 1,
+      duration: 0.8,
       ease: 'power3.out',
+      immediateRender: false,
       scrollTrigger: {
         trigger: el,
-        start: 'top 80%',
-        end: 'bottom 20%',
+        start: 'top bottom',
+        end: 'bottom top',
         toggleActions: 'play none none reverse',
+        once: true,
       },
     });
     return () => {
@@ -34,8 +36,8 @@ export default function SkillsMarquee() {
   }, []);
 
   return (
-    <section className="py-12 px-4 bg-muted/30">
-      <div ref={marqueeRef} className="overflow-hidden max-w-6xl mx-auto">
+    <section className="py-[var(--space-24)] px-[var(--space-24)]">
+      <div ref={marqueeRef} className="overflow-hidden mx-auto w-full max-w-[1200px]">
         <div className="flex space-x-8 animate-marquee whitespace-nowrap">
           {techLogos.map((logo, index) => (
             <div

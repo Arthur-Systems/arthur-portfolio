@@ -9,10 +9,10 @@ export default function BottomCards() {
   useAutoReveal({ root: rootRef.current });
 
   return (
-    <div ref={rootRef} className="px-6 py-16 md:py-24">
-      <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+    <div ref={rootRef} className="px-[var(--space-24)] py-[var(--space-32)] md:py-[var(--space-40)]">
+      <div className="mx-auto w-full max-w-[1200px] grid grid-cols-1 md:grid-cols-12 gap-[24px]">
         {/* About */}
-        <Card className="bg-card/50 backdrop-blur-sm border-border/60" data-reveal>
+        <Card className="md:col-span-4" data-reveal>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <span className="text-xl" aria-hidden></span>
@@ -20,14 +20,14 @@ export default function BottomCards() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-muted-foreground leading-relaxed">
+            <p className="text-[15px] leading-6 text-[hsl(var(--text-2))]">
             I’m an AI and full-stack engineer who turns ideas into dependable, human-centered products. I bring pragmatic execution, clean design, and a habit of turning ambiguous problems into measurable wins.
             </p>
           </CardContent>
         </Card>
 
         {/* Skills */}
-        <Card className="bg-card/50 backdrop-blur-sm border-border/60" data-reveal>
+        <Card className="md:col-span-4" data-reveal>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <span className="text-xl" aria-hidden>🚀</span>
@@ -45,7 +45,7 @@ export default function BottomCards() {
               ].map((skill) => (
                 <span
                   key={skill}
-                  className="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-medium"
+                  className="chip"
                   data-interactive
                 >
                   {skill}
@@ -56,7 +56,7 @@ export default function BottomCards() {
         </Card>
 
         {/* Current Projects */}
-        <Card className="bg-card/50 backdrop-blur-sm border-border/60" data-reveal>
+        <Card className="md:col-span-4" data-reveal>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <span className="text-xl" aria-hidden>💡</span>
@@ -64,7 +64,7 @@ export default function BottomCards() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-2">
-            <ul className="list-disc pl-5 text-sm text-muted-foreground">
+            <ul className="list-disc pl-5 text-[15px] leading-6 text-[hsl(var(--text-2))]">
               <li>YOLOv8 tablet inference toolkit with on-device optimization</li>
               <li>Serverless grading automation for Canvas with secure APIs</li>
               <li>Realtime collaboration bot + dashboard for Discord</li>

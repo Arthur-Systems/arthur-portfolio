@@ -105,7 +105,7 @@ export default function RootLayout({
                   {/* Page-wide gradient background to avoid black band behind fixed nav or pin spacers */}
                   <div className="min-h-screen bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.30)_0%,transparent_50%),radial-gradient(circle_at_80%_20%,rgba(255,119,198,0.30)_0%,transparent_50%),linear-gradient(135deg,#0f172a_0%,#000000_50%,#0f172a_100%)]">
                     <Navigation />
-                    <main aria-busy={false} suppressHydrationWarning>
+                    <main aria-busy={false} suppressHydrationWarning className="pb-[var(--space-40)]">
                       <ErrorBoundary>
                         {children}
                       </ErrorBoundary>
