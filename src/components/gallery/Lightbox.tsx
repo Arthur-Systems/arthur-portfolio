@@ -134,7 +134,6 @@ export function Lightbox({ photos, index, albumTitle, albumSlug, onClose, onNext
           <div className="flex items-center gap-2">
             <a href={photo.full.url} target="_blank" rel="noreferrer" className="lb-action h-8 px-3 rounded-2xl bg-white/5 border border-white/10 text-white/80 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/70">Open</a>
             <button onClick={download} className="lb-action h-8 px-3 rounded-2xl bg-white/5 border border-white/10 text-white/80 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/70">Download</button>
-            <button onClick={copyLink} className="lb-action h-8 px-3 rounded-2xl bg-white/5 border border-white/10 text-white/80 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/70">Copy link</button>
             <button onClick={onClose} className="lb-action h-8 px-3 rounded-2xl bg-white/5 border border-white/10 text-white/80 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-400/70">Close</button>
           </div>
         </div>
@@ -196,18 +195,7 @@ export function Lightbox({ photos, index, albumTitle, albumSlug, onClose, onNext
               </div>
             )}
           </div>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {/* Example chips; plug in real tags if available */}
-            {photo.exif.camera && <span className="h-7 px-3 rounded-2xl bg-white/5 border border-white/10 text-white/75">{photo.exif.camera}</span>}
-            {photo.exif.lens && <span className="h-7 px-3 rounded-2xl bg-white/5 border border-white/10 text-white/75">{photo.exif.lens}</span>}
-          </div>
-          <div className="mt-auto flex items-center justify-between pt-4 text-sm">
-            <button onClick={onClose} className="text-white/60 hover:text-white">Close (Esc)</button>
-            <div className="flex gap-4">
-              <button onClick={onPrev} className="text-white/60 hover:text-white">Previous</button>
-              <button onClick={onNext} className="text-white/60 hover:text-white">Next</button>
-            </div>
-          </div>
+          
         </aside>
 
         </div>
