@@ -1,11 +1,6 @@
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-import Flip from 'gsap/Flip';
-
-// Register GSAP plugins
-gsap.registerPlugin(ScrollTrigger, Flip);
-
-export { gsap, ScrollTrigger };
+// Re-export GSAP utilities from the central config to ensure a single instance
+// and consistent global configuration across the app.
+export { gsap, ScrollTrigger } from '@/lib/gsap/config';
 
 export interface HeroTimelineConfig {
   // Elements

@@ -19,11 +19,16 @@ export function animateWhatIDo(root: HTMLElement) {
     },
   });
 
-  tl.fromTo(
-    root.querySelectorAll(".cap-card"),
-    { opacity: 0, y: 28, rotateX: -4 },
-    { opacity: 1, y: 0, rotateX: 0, duration: 0.6, stagger: 0.12 }
-  );
+  {
+    const cards = root.querySelectorAll('.cap-card');
+    if (cards.length) {
+      tl.fromTo(
+        cards,
+        { opacity: 0, y: 28, rotateX: -4 },
+        { opacity: 1, y: 0, rotateX: 0, duration: 0.6, stagger: 0.12 }
+      );
+    }
+  }
 
   root.querySelectorAll<HTMLElement>(".cap-card").forEach((card) => {
     const st = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -50,20 +55,29 @@ export function animateCreds(root: HTMLElement) {
     scrollTrigger: { trigger: root, start: "top 75%", once: true },
   });
 
-  tl.fromTo(root.querySelector(".creds-card"), { opacity: 0, x: -32 }, { opacity: 1, x: 0, duration: 0.5 })
-    .fromTo(root.querySelector(".wins-card"), { opacity: 0, x: 32 }, { opacity: 1, x: 0, duration: 0.5 }, "<0.08");
+  {
+    const creds = root.querySelector('.creds-card');
+    const wins = root.querySelector('.wins-card');
+    if (creds) tl.fromTo(creds, { opacity: 0, x: -32 }, { opacity: 1, x: 0, duration: 0.5 });
+    if (wins) tl.fromTo(wins, { opacity: 0, x: 32 }, { opacity: 1, x: 0, duration: 0.5 }, creds ? '<0.08' : 0);
+  }
 
-  const credLines = root.querySelectorAll(".cred-line");
-  const winLines = root.querySelectorAll(".win-line");
-  tl.fromTo(credLines, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.25, stagger: 0.06 }, "<0.05");
-  tl.fromTo(winLines, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.25, stagger: 0.06 }, "<0.02");
+  {
+    const credLines = root.querySelectorAll('.cred-line');
+    const winLines = root.querySelectorAll('.win-line');
+    if (credLines.length) tl.fromTo(credLines, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.25, stagger: 0.06 }, '<0.05');
+    if (winLines.length) tl.fromTo(winLines, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.25, stagger: 0.06 }, '<0.02');
+  }
 
   const badge = root.querySelector(".badge-verified") as HTMLElement | null;
   if (badge) {
     gsap.fromTo(badge, { scale: 0.9, filter: "brightness(0.9)" }, { scale: 1, filter: "brightness(1.2)", duration: 0.35, delay: 0.2 });
   }
 
-  gsap.fromTo(root.querySelectorAll(".footprint-chip"), { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.25, stagger: 0.05, delay: 0.2 });
+  {
+    const chips = root.querySelectorAll('.footprint-chip');
+    if (chips.length) gsap.fromTo(chips, { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.25, stagger: 0.05, delay: 0.2 });
+  }
 }
 
 function fadeOnce(root: HTMLElement, sel: string) {

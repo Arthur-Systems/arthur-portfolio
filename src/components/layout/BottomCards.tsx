@@ -45,78 +45,111 @@ export default function BottomCards() {
       });
 
       // 1) Headline words
-      tl.fromTo(
-        root.querySelectorAll('.intro-h1 .word'),
-        { opacity: 0, y: '1em' },
-        { opacity: 1, y: '0em', stagger: 0.05, duration: 0.5 }
-      );
+      {
+        const words = root.querySelectorAll('.intro-h1 .word');
+        if (words.length) {
+          tl.fromTo(
+            words,
+            { opacity: 0, y: '1em' },
+            { opacity: 1, y: '0em', stagger: 0.05, duration: 0.5 }
+          );
+        }
+      }
 
       // 2) Subline
-      tl.fromTo(
-        root.querySelector('.intro-sub'),
-        { opacity: 0, y: 16 },
-        { opacity: 1, y: 0, duration: 0.35 },
-        '>-0.1'
-      );
+      {
+        const sub = root.querySelector('.intro-sub');
+        if (sub) {
+          tl.fromTo(
+            sub,
+            { opacity: 0, y: 16 },
+            { opacity: 1, y: 0, duration: 0.35 },
+            '>-0.1'
+          );
+        }
+      }
 
       // 3) Stats (slide up)
-      tl.fromTo(
-        root.querySelectorAll('.intro-stat'),
-        { opacity: 0, y: 24 },
-        { opacity: 1, y: 0, stagger: 0.08, duration: 0.35 },
-        '>-0.05'
-      );
+      {
+        const stats = root.querySelectorAll('.intro-stat');
+        if (stats.length) {
+          tl.fromTo(
+            stats,
+            { opacity: 0, y: 24 },
+            { opacity: 1, y: 0, stagger: 0.08, duration: 0.35 },
+            '>-0.05'
+          );
+        }
+      }
 
       // Count-up once (not scrubbed)
-      const st = ScrollTrigger.create({
-        trigger: root.querySelector('.stats') as Element,
-        start: 'top 80%',
-        once: true,
-        onEnter: () => {
-          root.querySelectorAll<HTMLElement>('.intro-stat [data-count]').forEach((el) => {
-            const target = Number(el.dataset.count || '0');
-            const obj = { n: 0 } as { n: number };
-            gsap.to(obj, {
-              n: target,
-              duration: 0.8,
-              ease: 'power1.out',
-              onUpdate: () => { el.innerText = formatNumber(obj.n, target); },
-            });
-          });
-        },
-      });
+      const statsTrigger = root.querySelector('.stats');
+      const st = statsTrigger
+        ? ScrollTrigger.create({
+            trigger: statsTrigger,
+            start: 'top 80%',
+            once: true,
+            onEnter: () => {
+              root.querySelectorAll<HTMLElement>('.intro-stat [data-count]').forEach((el) => {
+                const target = Number(el.dataset.count || '0');
+                const obj = { n: 0 } as { n: number };
+                gsap.to(obj, {
+                  n: target,
+                  duration: 0.8,
+                  ease: 'power1.out',
+                  onUpdate: () => { el.innerText = formatNumber(obj.n, target); },
+                });
+              });
+            },
+          })
+        : null;
 
       // 4) Photo reveal (late)
-      tl.fromTo(
-        root.querySelector('.intro-photo'),
-        { clipPath: 'inset(0 0 0 100%)', scale: 1.08, opacity: 0.0 },
-        { clipPath: 'inset(0 0 0 0%)', scale: 1.0, opacity: 1, duration: 0.6 },
-        '>+0.05'
-      );
+      {
+        const photo = root.querySelector('.intro-photo');
+        if (photo) {
+          tl.fromTo(
+            photo,
+            { clipPath: 'inset(0 0 0 100%)', scale: 1.08, opacity: 0.0 },
+            { clipPath: 'inset(0 0 0 0%)', scale: 1.0, opacity: 1, duration: 0.6 },
+            '>+0.05'
+          );
+        }
+      }
 
       // Halo behind photo
-      tl.fromTo(
-        root.querySelector('.intro-photo-halo'),
-        { opacity: 0, scale: 0.9 },
-        { opacity: 0.35, scale: 1, duration: 0.5 },
-        '<'
-      );
+      {
+        const halo = root.querySelector('.intro-photo-halo');
+        if (halo) {
+          tl.fromTo(
+            halo,
+            { opacity: 0, scale: 0.9 },
+            { opacity: 0.35, scale: 1, duration: 0.5 },
+            '<'
+          );
+        }
+      }
 
       cleanupFns.push(() => tl.scrollTrigger?.kill());
-      cleanupFns.push(() => st.kill());
+      if (st) cleanupFns.push(() => st.kill());
     });
 
     // Mobile: simple fade/slide once, no pin
     mm.add('(max-width: 767px)', () => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-      tl.fromTo(root.querySelectorAll('.intro-h1 .word'), { opacity: 0, y: '1em' }, { opacity: 1, y: '0', stagger: 0.04, duration: 0.4 })
-        .fromTo(root.querySelector('.intro-sub'), { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.3 }, '>-0.05')
-        .fromTo(root.querySelectorAll('.intro-stat'), { opacity: 0, y: 16 }, { opacity: 1, y: 0, stagger: 0.06, duration: 0.3 }, '>-0.05')
-        .fromTo(root.querySelector('.intro-photo'), { opacity: 0, x: 24, scale: 1.02 }, { opacity: 1, x: 0, scale: 1, duration: 0.35 }, '>-0.05')
-        .fromTo(root.querySelector('.intro-photo-halo'), { opacity: 0 }, { opacity: 0.35, duration: 0.3 }, '<');
+      const wordsM = root.querySelectorAll('.intro-h1 .word');
+      if (wordsM.length) tl.fromTo(wordsM, { opacity: 0, y: '1em' }, { opacity: 1, y: '0', stagger: 0.04, duration: 0.4 });
+      const subM = root.querySelector('.intro-sub');
+      if (subM) tl.fromTo(subM, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.3 }, '>-0.05');
+      const statsM = root.querySelectorAll('.intro-stat');
+      if (statsM.length) tl.fromTo(statsM, { opacity: 0, y: 16 }, { opacity: 1, y: 0, stagger: 0.06, duration: 0.3 }, '>-0.05');
+      const photoM = root.querySelector('.intro-photo');
+      if (photoM) tl.fromTo(photoM, { opacity: 0, x: 24, scale: 1.02 }, { opacity: 1, x: 0, scale: 1, duration: 0.35 }, '>-0.05');
+      const haloM = root.querySelector('.intro-photo-halo');
+      if (haloM) tl.fromTo(haloM, { opacity: 0 }, { opacity: 0.35, duration: 0.3 }, '<');
 
-      const st = ScrollTrigger.create({ trigger: root, start: 'top 85%', once: true, onEnter: () => tl.play(0) });
-      cleanupFns.push(() => st.kill());
+      const st2 = ScrollTrigger.create({ trigger: root, start: 'top 85%', once: true, onEnter: () => tl.play(0) });
+      cleanupFns.push(() => st2.kill());
     });
 
     return () => {

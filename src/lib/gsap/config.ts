@@ -18,6 +18,12 @@ gsap.registerPlugin(
   Draggable
 );
 
+// Quiet noisy dev warnings about empty NodeLists/optional targets
+// This does not hide real errors; GSAP simply skips null/empty targets.
+try {
+  gsap.config({ nullTargetWarn: false });
+} catch {}
+
 // GSAP configuration defaults
 export const gsapConfig = {
   defaults: {
