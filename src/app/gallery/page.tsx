@@ -8,26 +8,26 @@ import type { Metadata } from 'next';
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Photography Gallery",
-  description: "Explore my photography portfolio featuring automotive events, costumes, and creative captures. High-quality images showcasing moments of speed, style, and storytelling.",
+  title: "Arthur Wei - Photography",
+  description: "Selected automotive, event, and portrait work.",
   keywords: ["photography", "gallery", "automotive", "racing", "costumes", "photography portfolio", "Arthur Wei"],
   openGraph: {
-    title: "Photography Gallery | Haichuan Wei",
-    description: "Explore my photography portfolio featuring automotive events, costumes, and creative captures.",
+    title: "Arthur Wei - Photography",
+    description: "Selected automotive, event, and portrait work.",
     type: "website",
     images: [
       {
         url: "/_gallery/raceday/thumb/DSC00114-2.webp",
         width: 400,
         height: 300,
-        alt: "Photography Gallery - Raceday Collection",
+        alt: "Arthur Wei Photography - Raceday Collection",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Photography Gallery | Haichuan Wei",
-    description: "Explore my photography portfolio featuring automotive events, costumes, and creative captures.",
+    title: "Arthur Wei - Photography",
+    description: "Selected automotive, event, and portrait work.",
     images: ["/_gallery/raceday/thumb/DSC00114-2.webp"],
   },
 };
