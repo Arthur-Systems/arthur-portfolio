@@ -29,8 +29,9 @@ export async function generateStaticParams() {
   }
 }
 
-export default async function AlbumPage({ params }: { params: { album: string } }) {
-  const manifest = await readManifest(params.album);
+export default async function AlbumPage({ params }: { params: Promise<{ album: string }> }) {
+  const { album } = await params;
+  const manifest = await readManifest(album);
   if (!manifest) return notFound();
 
   return (
@@ -45,7 +46,7 @@ export default async function AlbumPage({ params }: { params: { album: string } 
             <span className="text-lg leading-none">←</span>
             <span className="hidden sm:inline">Back</span>
           </Link>
-          <h1 className="text-3xl font-bold">{manifest.title || params.album}</h1>
+          <h1 className="text-3xl font-bold">{manifest.title || album}</h1>
         </div>
         <div />
       </div>

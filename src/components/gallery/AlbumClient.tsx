@@ -47,7 +47,16 @@ export function AlbumClient({ manifest }: { manifest: AlbumManifest }) {
       </div>
       <div ref={loadMoreRef} className="h-10" />
       {lightboxIndex != null && (
-        <Lightbox photo={photos[lightboxIndex]} onClose={closeLightbox} onNext={next} onPrev={prev} />
+        <Lightbox
+          photos={photos}
+          index={lightboxIndex}
+          albumTitle={manifest.title}
+          albumSlug={manifest.slug}
+          onClose={closeLightbox}
+          onNext={next}
+          onPrev={prev}
+          onSelect={(i) => setLightboxIndex(i)}
+        />
       )}
     </div>
   );

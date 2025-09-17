@@ -248,6 +248,10 @@ html:not(.dark) {
 
 }
 
+/* Hide native scrollbars for cosmetic carousels/strips */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
 /* ScrollSmoother styles (only applied when wrapper exists) */
 /* No global fixed wrapper to avoid trapping scroll on other pages */
 
