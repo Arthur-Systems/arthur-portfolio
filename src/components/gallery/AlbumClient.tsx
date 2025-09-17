@@ -41,7 +41,7 @@ export function AlbumClient({ manifest }: { manifest: AlbumManifest }) {
       <div className="[column-fill:_balance]_sm:columns-2 lg:columns-3 xl:columns-4 gap-4 space-y-4">
         {visible.map((p, idx) => (
           <div key={p.id} className="break-inside-avoid">
-            <PhotoCard src={p.thumb.url} alt={p.filename} width={p.thumb.w} height={p.thumb.h} lqip={p.thumb.lqip} onClick={() => openLightbox(idx)} />
+            <PhotoCard src={p.preview.url} alt={p.filename} width={p.preview.w} height={p.preview.h} lqip={p.thumb.lqip} onClick={() => openLightbox(idx)} />
           </div>
         ))}
       </div>

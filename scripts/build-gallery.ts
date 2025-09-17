@@ -13,21 +13,13 @@ import { promises as fs } from 'fs';
 import sharp from 'sharp';
 import pLimit from 'p-limit';
 import { exiftool } from 'exiftool-vendored';
-import {
-  AlbumManifest,
-  AlbumPhoto,
-  GalleryAlbumSummary,
-  PhotoExif,
-  slugifyFolderName,
-  titleFromFolderName,
-  calcContainSize,
-  toIso,
-} from '@/lib/gallery';
+import type { AlbumManifest, AlbumPhoto, GalleryAlbumSummary, PhotoExif } from '@/lib/gallery';
+import { slugifyFolderName, titleFromFolderName, calcContainSize, toIso } from '@/lib/gallery';
 
 const IMAGE_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif']);
 const CONCURRENCY = Number(process.env.GALLERY_CONCURRENCY || 4);
-const THUMB_LONGEST = 320;
-const PREVIEW_LONGEST = 1024;
+const THUMB_LONGEST = 512;
+const PREVIEW_LONGEST = 1280;
 
 function isImage(filename: string): boolean {
   return IMAGE_EXTENSIONS.has(path.extname(filename).toLowerCase());
@@ -178,8 +170,8 @@ async function processAlbum(albumDirName: string, albumsRoot: string, outRoot: s
     const previewOut = path.join(previewDir, `${base}.webp`);
 
     const [thumbSize, previewSize, lqip, exif] = await Promise.all([
-      generateVariant(originalPath, thumbOut, originalWidth, originalHeight, THUMB_LONGEST, 65),
-      generateVariant(originalPath, previewOut, originalWidth, originalHeight, PREVIEW_LONGEST, 80),
+      generateVariant(originalPath, thumbOut, originalWidth, originalHeight, THUMB_LONGEST, 72),
+      generateVariant(originalPath, previewOut, originalWidth, originalHeight, PREVIEW_LONGEST, 82),
       buildLqip(originalPath),
       readExif(originalPath),
     ]);
@@ -213,7 +205,7 @@ async function processAlbum(albumDirName: string, albumsRoot: string, outRoot: s
   }, '');
 
   const coverBase = coverCandidate ? coverCandidate.replace(/\.[^/.]+$/, '') : null;
-  const cover = coverBase ? `/${path.posix.join('_gallery', slug, 'thumb', `${coverBase}.webp`)}` : `/${path.posix.join('_gallery', slug, 'thumb', `${photos[0]?.id || 'cover'}.webp`)}`;
+  const cover = coverBase ? `/${path.posix.join('_gallery', slug, 'preview', `${coverBase}.webp`)}` : `/${path.posix.join('_gallery', slug, 'preview', `${photos[0]?.id || 'cover'}.webp`)}`;
 
   const manifest: AlbumManifest = { slug, title, photos };
   const summary: GalleryAlbumSummary = {
