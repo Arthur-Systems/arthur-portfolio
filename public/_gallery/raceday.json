@@ -1,0 +1,781 @@
+{
+  "slug": "raceday",
+  "title": "Raceday",
+  "photos": [
+    {
+      "id": "DSC00114-2",
+      "filename": "DSC00114-2.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC00114-2.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADQAQCdASoQAAsABABoJYgC7ADH1sBDAAD+HYVqDZaBOQot9rSyea3xgpOf9cy0SYanse0R6SDvs8JUY7ZLrwAA"
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC00114-2.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC00114-2.jpg",
+        "w": 4240,
+        "h": 2832,
+        "bytes": 2425195
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 168,
+        "aperture": 45,
+        "shutter": "1/250",
+        "iso": 3200,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC00219",
+      "filename": "DSC00219.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC00219.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADQAQCdASoQAAsABABoJYwAAujGLEEcgAD+6f042GvODnzglSTvh6rBpmc5DQ2zoMAp5S5R7yPE+smKIZgAAA=="
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC00219.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC00219.jpg",
+        "w": 4240,
+        "h": 2832,
+        "bytes": 1457126
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 216,
+        "aperture": 45,
+        "shutter": "1/250",
+        "iso": 2000,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC00267",
+      "filename": "DSC00267.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC00267.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADwAQCdASoQAAsABABoJQBdgCK5vl8l7gAA/un+dvZcEDfQTfx4BFORCQPWzeUN8aKLfUXNCmGodcDTvQgAAA=="
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC00267.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC00267.jpg",
+        "w": 4240,
+        "h": 2832,
+        "bytes": 1421049
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 140,
+        "aperture": 45,
+        "shutter": "1/160",
+        "iso": 2000,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC00354",
+      "filename": "DSC00354.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC00354.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAAAQAgCdASoQAAsABABoJYwC7AD0kXPkafAAAP70lI53KknJYQu5cKULkClYKcgh8/6QAA=="
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC00354.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC00354.jpg",
+        "w": 4240,
+        "h": 2832,
+        "bytes": 2021537
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 400,
+        "aperture": 45,
+        "shutter": "1/1250",
+        "iso": 8000,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC00365",
+      "filename": "DSC00365.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC00365.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAACwAQCdASoQAAsABABoJQAAXGPsrdAAAP7r7LTaEZQobbJ/6mGdp/UiybsZfCP9dz2gAA=="
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC00365.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC00365.jpg",
+        "w": 4240,
+        "h": 2832,
+        "bytes": 2867950
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 288,
+        "aperture": 45,
+        "shutter": "1/1250",
+        "iso": 8000,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC00419",
+      "filename": "DSC00419.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC00419.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADQAQCdASoQAAsABABoJYwAAqyR+BWIAAD+5fbZrsROIwqIc5ahCPpKQdmb9rhOD2uFolLc95deAeL6AAA="
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC00419.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC00419.jpg",
+        "w": 4240,
+        "h": 2832,
+        "bytes": 2699070
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 346,
+        "aperture": 45,
+        "shutter": "1/1250",
+        "iso": 10000,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC00435-Enhanced-NR",
+      "filename": "DSC00435-Enhanced-NR.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC00435-Enhanced-NR.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACwAQCdASoQAAsABABoJYwAAud7fea4AP7vO8GZNXNnTJHY2qJZpfHLrue0AAAA"
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC00435-Enhanced-NR.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC00435-Enhanced-NR.jpg",
+        "w": 4240,
+        "h": 2832,
+        "bytes": 1159786
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 278,
+        "aperture": 45,
+        "shutter": "1/1250",
+        "iso": 10000,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC00435",
+      "filename": "DSC00435.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC00435.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACwAQCdASoQAAsABABoJYwAAud7fea4AP7vO8GZNXNnTJHY2qJZpfHLrue0AAAA"
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC00435.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC00435.jpg",
+        "w": 4240,
+        "h": 2832,
+        "bytes": 3235022
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 278,
+        "aperture": 45,
+        "shutter": "1/1250",
+        "iso": 10000,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC00509",
+      "filename": "DSC00509.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC00509.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAADQAQCdASoQAAsABABoJQBOgCKVHpkAAAD+3DH/MMxwvGNINms4TAwtVcrAut6ORpcwvAAA"
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC00509.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC00509.jpg",
+        "w": 4240,
+        "h": 2832,
+        "bytes": 2194607
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 400,
+        "aperture": 45,
+        "shutter": "1/250",
+        "iso": 2000,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC00838",
+      "filename": "DSC00838.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC00838.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAADwAQCdASoQAAsABABoJYwAAxZfM/0DkAAA/ukGdSHQv5DreXCJFLvg5fSVOPtpQAA="
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC00838.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC00838.jpg",
+        "w": 4240,
+        "h": 2832,
+        "bytes": 2302184
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 400,
+        "aperture": 16,
+        "shutter": "1/8000",
+        "iso": 6400,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC00858",
+      "filename": "DSC00858.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC00858.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAACwAQCdASoQAAsABABoJaQAAhWNSNQAAP7p+O1m4gwzcwhYdXzgoTI94VdxkS8YOGTL5pNjAAA="
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC00858.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC00858.jpg",
+        "w": 2768,
+        "h": 1848,
+        "bytes": 823804
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 400,
+        "aperture": 10,
+        "shutter": "1/8000",
+        "iso": 2000,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC00870",
+      "filename": "DSC00870.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC00870.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRjgAAABXRUJQVlA4ICwAAADwAQCdASoQAAsABABoJaQAAxZhI7oxSAAA/u7WPDZfP/7Vg7jAea+2KWAAAA=="
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC00870.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC00870.jpg",
+        "w": 2768,
+        "h": 1848,
+        "bytes": 662329
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 400,
+        "aperture": 10,
+        "shutter": "1/8000",
+        "iso": 1600,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC00879",
+      "filename": "DSC00879.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC00879.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAADQAQCdASoQAAsABABoJZwAAudVmgrgAAD+7tnQ69BkgEGqjCq3Vfpq6LmrYgAA"
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC00879.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC00879.jpg",
+        "w": 2768,
+        "h": 1848,
+        "bytes": 758809
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 400,
+        "aperture": 10,
+        "shutter": "1/2500",
+        "iso": 640,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC00891",
+      "filename": "DSC00891.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC00891.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAADQAQCdASoQAAsABABoJYwAAudmQdSwAAD+6+KxDfAP2lwepYM1AczvOKP+wez9cAAAAA=="
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC00891.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC00891.jpg",
+        "w": 2768,
+        "h": 1848,
+        "bytes": 862224
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 400,
+        "aperture": 11,
+        "shutter": "1/2500",
+        "iso": 1000,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC00911",
+      "filename": "DSC00911.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC00911.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAADwAQCdASoQAAsABABoJYgC7AELYM0rqTAA/ujT0OICG3hjLMKOwFXj4be6SAAA"
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC00911.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC00911.jpg",
+        "w": 2768,
+        "h": 1848,
+        "bytes": 992079
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 400,
+        "aperture": 11,
+        "shutter": "1/2500",
+        "iso": 800,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC00930",
+      "filename": "DSC00930.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC00930.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRjwAAABXRUJQVlA4IDAAAADQAQCdASoQAAsABABoJQBOgCHhmex3kAD+7o7De/IrGsdkGZSsX328+FFim89ggAA="
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC00930.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC00930.jpg",
+        "w": 2768,
+        "h": 1848,
+        "bytes": 1023953
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 190,
+        "aperture": 11,
+        "shutter": "1/2500",
+        "iso": 800,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC01046",
+      "filename": "DSC01046.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC01046.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAAAQAgCdASoQAAsABABoJQBdgCFsFrbHlTgAAP7p8+muo8Jp3NEYrrIIWcSmVBOyvDKQxOxd4AA="
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC01046.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC01046.jpg",
+        "w": 4240,
+        "h": 2832,
+        "bytes": 2667159
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 400,
+        "aperture": 11,
+        "shutter": "1/4000",
+        "iso": 2000,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC01055",
+      "filename": "DSC01055.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC01055.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRj4AAABXRUJQVlA4IDIAAACQAQCdASoQAAsABABoJYwAAudFrAAA/u9gLp3A79+nbbCbiXkrYh14W61ftF9F8DAAAA=="
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC01055.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC01055.jpg",
+        "w": 4240,
+        "h": 2832,
+        "bytes": 2637315
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 244,
+        "aperture": 11,
+        "shutter": "1/4000",
+        "iso": 1600,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC01227-2",
+      "filename": "DSC01227-2.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC01227-2.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAADwAQCdASoQAAsABABoJaQAAq4L7sSEEgAA/vMrFj1jk7Teh2CENt+Mf2oEocA2rI3JadFAiDsGnGAA"
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC01227-2.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC01227-2.jpg",
+        "w": 4240,
+        "h": 2832,
+        "bytes": 1173158
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 140,
+        "aperture": 25,
+        "shutter": "1/320",
+        "iso": 1600,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC01781-2",
+      "filename": "DSC01781-2.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC01781-2.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAwAgCdASoQAAsABABoJYwCdADdYvT20fL6AAD+mldzlzfSo5y4a/O3ofQJj3IYSsJXuBlpZa2DItJNnsLV6XDvNWC0Togt1eRE3tF02p52QR3rn9gAAA=="
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC01781-2.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC01781-2.jpg",
+        "w": 4240,
+        "h": 2832,
+        "bytes": 3794150
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "28-45mm F1.8 DG DN | Art 024",
+        "focalLength": 40.2,
+        "aperture": 16,
+        "shutter": "1/2500",
+        "iso": 8000,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC02600",
+      "filename": "DSC02600.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC02600.webp",
+        "w": 320,
+        "h": 213,
+        "lqip": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADQAQCdASoQAAsABABoJYwAAucVpNJRgAD9K0qA6lNxG4yTo0bu5chsMCwf+ByvUh9By7GW8j6S0SibO+z9AK9vAGaQlymAAAA="
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC02600.webp",
+        "w": 1024,
+        "h": 683
+      },
+      "full": {
+        "url": "/albums/raceday/DSC02600.jpg",
+        "w": 9504,
+        "h": 6336,
+        "bytes": 6699821
+      },
+      "exif": {
+        "camera": "ILCE-7RM5",
+        "lens": "FE 200-600mm F5.6-6.3 G OSS",
+        "focalLength": 478,
+        "aperture": 13,
+        "shutter": "1/160",
+        "iso": 100,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC03124",
+      "filename": "DSC03124.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC03124.webp",
+        "w": 320,
+        "h": 213,
+        "lqip": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADQAQCdASoQAAsABABoJQBdgCPzpzTIQAD+5Trrcllrs9XI5yGxTjQ9ZzV3DwhlXQBHoHw6eRoUdSZVs8Ne32FDQxmhuJcCQAA="
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC03124.webp",
+        "w": 1024,
+        "h": 683
+      },
+      "full": {
+        "url": "/albums/raceday/DSC03124.jpg",
+        "w": 9504,
+        "h": 6336,
+        "bytes": 4643452
+      },
+      "exif": {
+        "camera": "ILCE-7RM5",
+        "lens": "FE 200-600mm F5.6-6.3 G OSS",
+        "focalLength": 318,
+        "aperture": 11,
+        "shutter": "1/125",
+        "iso": 100,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC09080",
+      "filename": "DSC09080.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC09080.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAACwAQCdASoQAAsABABoJaQAAuUrRdAAAP7u7mQUcf3nd7xEvrQ0MMlGIk4m0FJU1guaAsyAAAA="
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC09080.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC09080.jpg",
+        "w": 4240,
+        "h": 2832,
+        "bytes": 2099074
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 400,
+        "aperture": 45,
+        "shutter": "1/250",
+        "iso": 2500,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC09356",
+      "filename": "DSC09356.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC09356.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRkYAAABXRUJQVlA4IDoAAACwAQCdASoQAAsABABoJQAASscDDgYAAP7pWJ/rrQNE/1wa0VMwiL52c4FW40xQG8D5ylEl/7Dv8YgA"
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC09356.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC09356.jpg",
+        "w": 4240,
+        "h": 2832,
+        "bytes": 1525602
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 250,
+        "aperture": 45,
+        "shutter": "1/400",
+        "iso": 3200,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC09374",
+      "filename": "DSC09374.jpg",
+      "thumb": {
+        "url": "/_gallery/raceday/thumb/DSC09374.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAACwAQCdASoQAAsABABoJQAAXMUXGCcAAP7Yw2JJXIAxr74ETVKu+KeOsANkbLlVbZHWbpF1Y79YyiGxmQAAAA=="
+      },
+      "preview": {
+        "url": "/_gallery/raceday/preview/DSC09374.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/raceday/DSC09374.jpg",
+        "w": 4240,
+        "h": 2832,
+        "bytes": 1924796
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II + 2X Teleconverter",
+        "focalLength": 400,
+        "aperture": 45,
+        "shutter": "1/400",
+        "iso": 2000,
+        "datetime": null,
+        "gps": null
+      }
+    }
+  ]
+}

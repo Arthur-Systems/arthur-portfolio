@@ -197,6 +197,18 @@ tech.yourdomain.com   CNAME  yourdomain.com
 
 ---
 
+## Photography (Local Files)
+
+The photography page loads images from the local filesystem. Place images under `public/photos/` (optionally in album subfolders). See `GOOGLE_PHOTOS_SETUP.md` for the local photos guide and JSON metadata examples.
+
+Quick start:
+
+1. Create `public/photos/`.
+2. Optionally create an album folder, e.g., `public/photos/portraits/`.
+3. Drop images into the folder(s). Optional: add `*.json` sidecars or a `metadata.json`.
+4. Visit `/photography`.
+
+
 ## Performance & Monitoring
 
 * **Bundle analysis**: `npm run build:analyze`

@@ -124,7 +124,7 @@ export default function ContactForm() {
         <section aria-label="Contact" className="rounded-[var(--radius-lg)] border border-[hsl(var(--border))] bg-[hsl(var(--card))] p-[var(--space-24)]">
           <header className="mb-[var(--space-16)]" data-stagger>
             <div className="eyebrow">Contact</div>
-            <h2 className="section-title">Contact Arthur</h2>
+            <h2 className="section-title">Contact Me</h2>
             <p className="mt-[var(--space-8)] text-[15px] leading-6 text-[hsl(var(--text-2))]">I read every message. Replies within 24–48 hours.</p>
           </header>
 

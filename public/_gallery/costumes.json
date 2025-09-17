@@ -1,0 +1,130 @@
+{
+  "slug": "costumes",
+  "title": "Costumes",
+  "photos": [
+    {
+      "id": "DSC01597-2",
+      "filename": "DSC01597-2.jpg",
+      "thumb": {
+        "url": "/_gallery/costumes/thumb/DSC01597-2.webp",
+        "w": 320,
+        "h": 214,
+        "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAwAgCdASoQAAsABABoJYgCdAERH665j3ESAAD+QSWexvqNS3nywzOyJzcLPeb523aE4zSGNZsqJ7/se6W7v+6gDYRK8nGagLtpI7jAYZe07SuO4AAAAA=="
+      },
+      "preview": {
+        "url": "/_gallery/costumes/preview/DSC01597-2.webp",
+        "w": 1024,
+        "h": 684
+      },
+      "full": {
+        "url": "/albums/costumes/DSC01597-2.jpg",
+        "w": 4240,
+        "h": 2832,
+        "bytes": 3234639
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "28-45mm F1.8 DG DN | Art 024",
+        "focalLength": 45,
+        "aperture": 1.8,
+        "shutter": "1/1000",
+        "iso": 10000,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC03019-Enhanced-NR",
+      "filename": "DSC03019-Enhanced-NR.jpg",
+      "thumb": {
+        "url": "/_gallery/costumes/thumb/DSC03019-Enhanced-NR.webp",
+        "w": 214,
+        "h": 320,
+        "lqip": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADQAQCdASoLABAABABoJbACdADZXgptwAD+5obZLR3ZaZ6rdzGOrFH7PCTGrYwIVUM30G2rvOZRmHPpYlrj4+Z8fOPdXTyvUcu7jYdCyiOtwfBguEAAAA=="
+      },
+      "preview": {
+        "url": "/_gallery/costumes/preview/DSC03019-Enhanced-NR.webp",
+        "w": 684,
+        "h": 1024
+      },
+      "full": {
+        "url": "/albums/costumes/DSC03019-Enhanced-NR.jpg",
+        "w": 2832,
+        "h": 4240,
+        "bytes": 2391332
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "28-45mm F1.8 DG DN | Art 024",
+        "focalLength": 41.1,
+        "aperture": 1.8,
+        "shutter": "1/640",
+        "iso": 5000,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC05028",
+      "filename": "DSC05028.jpg",
+      "thumb": {
+        "url": "/_gallery/costumes/thumb/DSC05028.webp",
+        "w": 214,
+        "h": 320,
+        "lqip": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAQCdASoLABAABABoJQBOgBttsz3me9IA/uosIcOXG8KzOCVxgHdZb8of3KisaKYO8HewSx3GMrp0UyldQq+vn+/FiVf1qBMBqtr+E89l/R/Q+QBLoAQBVS8DleJrnQAAAA=="
+      },
+      "preview": {
+        "url": "/_gallery/costumes/preview/DSC05028.webp",
+        "w": 684,
+        "h": 1024
+      },
+      "full": {
+        "url": "/albums/costumes/DSC05028.jpg",
+        "w": 2832,
+        "h": 4240,
+        "bytes": 1520332
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II",
+        "focalLength": 70,
+        "aperture": 2.8,
+        "shutter": "1/200",
+        "iso": 1000,
+        "datetime": null,
+        "gps": null
+      }
+    },
+    {
+      "id": "DSC07401-3",
+      "filename": "DSC07401-3.jpg",
+      "thumb": {
+        "url": "/_gallery/costumes/thumb/DSC07401-3.webp",
+        "w": 214,
+        "h": 320,
+        "lqip": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAQAgCdASoLABAABABoJZACdAD0Mfe4pCAAAP0gMYlVMiHvJaJvhV+1ZCt7LmtAD5bOyWSzYLaFsiEv9vXzjTK6QG7C7zcNbMUFILkAAAA="
+      },
+      "preview": {
+        "url": "/_gallery/costumes/preview/DSC07401-3.webp",
+        "w": 684,
+        "h": 1024
+      },
+      "full": {
+        "url": "/albums/costumes/DSC07401-3.jpg",
+        "w": 1848,
+        "h": 2768,
+        "bytes": 1719024
+      },
+      "exif": {
+        "camera": "ILCE-7SM3",
+        "lens": "FE 70-200mm F2.8 GM OSS II",
+        "focalLength": 91,
+        "aperture": 22,
+        "shutter": "1/8000",
+        "iso": 16000,
+        "datetime": null,
+        "gps": null
+      }
+    }
+  ]
+}

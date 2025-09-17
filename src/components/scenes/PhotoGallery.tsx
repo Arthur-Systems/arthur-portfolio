@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from 'react';
 import { gsap } from '@/lib/gsapTimelines';
-import { googlePhotosAPI, type PhotoItem } from '@/lib/googlePhotos';
+import type { PhotoItem } from '@/types/photos';
 
 // Fallback photos in case Google Photos API is not configured
 const fallbackPhotos: PhotoItem[] = [
@@ -241,19 +241,19 @@ export default function PhotoGallery() {
         setLoading(true);
         setError(null);
         
-        // Try to fetch from Google Photos API
-        const albumId = process.env.NEXT_PUBLIC_GOOGLE_PHOTOS_ALBUM_ID;
-        
-        if (albumId) {
-          const googlePhotos = await googlePhotosAPI.getPhotosFromAlbum(albumId);
-          if (googlePhotos.length > 0) {
-            setPhotos(googlePhotos);
+        const response = await fetch('/api/photos');
+        if (response.ok) {
+          const data = await response.json();
+          const items = Array.isArray(data?.mediaItems) ? data.mediaItems as PhotoItem[] : [];
+          if (items.length > 0) {
+            setPhotos(items);
           }
+        } else {
+          setError('Failed to load local photos. Showing sample photos.');
         }
       } catch (err) {
-        console.error('Failed to fetch photos from Google Photos:', err);
-        setError('Failed to load photos from Google Photos. Showing sample photos.');
-        // Keep fallback photos
+        console.error('Failed to fetch local photos:', err);
+        setError('Failed to load local photos. Showing sample photos.');
       } finally {
         setLoading(false);
       }
