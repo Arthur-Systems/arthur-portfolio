@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation';
 import type { AlbumManifest } from '@/lib/gallery';
 import Link from 'next/link';
 import { AlbumClient } from '@/components/gallery/AlbumClient';
-import type { Metadata } from 'next';
 
 export const revalidate = 3600;
 
@@ -28,51 +27,6 @@ export async function generateStaticParams() {
   } catch {
     return [];
   }
-}
-
-export async function generateMetadata({ params }: { params: Promise<{ album: string }> }): Promise<Metadata> {
-  const { album } = await params;
-  const manifest = await readManifest(album);
-  
-  if (!manifest) {
-    return {
-      title: "Album Not Found",
-      description: "The requested photography album could not be found.",
-    };
-  }
-
-  const albumDescriptions: Record<string, string> = {
-    raceday: "High-speed automotive photography capturing the energy and excitement of racing events. Dynamic shots of vehicles, drivers, and the racing atmosphere.",
-    costumes: "Creative costume photography showcasing character design, fashion, and artistic expression through themed photography sessions.",
-  };
-
-  const description = albumDescriptions[album] || `Photography album: ${manifest.title}. ${manifest.photos.length} high-quality images.`;
-  const coverPhoto = manifest.photos[0];
-
-  return {
-    title: `${manifest.title} | Photography Gallery`,
-    description,
-    keywords: ["photography", "gallery", manifest.title.toLowerCase(), "Arthur Wei", "photography portfolio"],
-    openGraph: {
-      title: `${manifest.title} | Haichuan Wei Photography`,
-      description,
-      type: "website",
-      images: [
-        {
-          url: coverPhoto?.preview.url || coverPhoto?.thumb.url || "",
-          width: coverPhoto?.preview.w || 400,
-          height: coverPhoto?.preview.h || 300,
-          alt: `${manifest.title} - Photography Album`,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${manifest.title} | Haichuan Wei Photography`,
-      description,
-      images: [coverPhoto?.preview.url || coverPhoto?.thumb.url || ""],
-    },
-  };
 }
 
 export default async function AlbumPage({ params }: { params: Promise<{ album: string }> }) {
