@@ -3,10 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 
-type Reason = 'General' | 'Project' | 'Speaking' | 'Hiring' | 'Other';
-type Budget = '<$1k' | '$1–5k' | '$5–15k' | '$15–50k' | '$50k+';
-type Timeline = 'ASAP' | '2–4 weeks' | '1–3 months' | '3+ months';
-type ContactPref = 'Email' | 'Calendar link' | 'Telegram';
+type Reason = 'General' | 'Hiring';
 
 export default function ContactForm() {
   const rootRef = useRef<HTMLDivElement | null>(null);
@@ -15,16 +12,12 @@ export default function ContactForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [budget, setBudget] = useState<Budget | null>(null);
-  const [timeline, setTimeline] = useState<Timeline | null>(null);
-  const [pref, setPref] = useState<ContactPref>('Email');
   const [consent, setConsent] = useState(false);
-  const [file, setFile] = useState<File | null>(null);
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const showProjectBlock = reason === 'Project' || reason === 'Hiring';
+  const showProjectBlock = false;
 
   useEffect(() => {
     if (!rootRef.current) return;
@@ -36,10 +29,7 @@ export default function ContactForm() {
     return () => ctx.revert();
   }, []);
 
-  const reasons: Reason[] = useMemo(() => ['General', 'Project', 'Speaking', 'Hiring', 'Other'], []);
-  const budgets: Budget[] = useMemo(() => ['<$1k', '$1–5k', '$5–15k', '$15–50k', '$50k+'], []);
-  const timelines: Timeline[] = useMemo(() => ['ASAP', '2–4 weeks', '1–3 months', '3+ months'], []);
-  const prefs: ContactPref[] = useMemo(() => ['Email', 'Calendar link', 'Telegram'], []);
+  const reasons: Reason[] = useMemo(() => ['General', 'Hiring'], []);
 
   const validate = () => {
     const next: Record<string, string> = {};
@@ -48,15 +38,7 @@ export default function ContactForm() {
     if (!name.trim()) next.name = 'Please fill this in.';
     if (!emailOk) next.email = "That doesn’t look like an email.";
     if (message.trim().length < 20) next.message = 'Add a bit more detail (20+ characters).';
-    if (showProjectBlock) {
-      if (!budget) next.budget = 'Please fill this in.';
-      if (!timeline) next.timeline = 'Please fill this in.';
-    }
-    if (file) {
-      const okType = /(pdf|png|jpe?g|mp4)$/i.test(file.name);
-      const okSize = file.size <= 10 * 1024 * 1024;
-      if (!okType || !okSize) next.file = 'Max 10MB, PDF/PNG/JPG/MP4 only.';
-    }
+    // Simplified form: no project fields, no file
     setErrors(next);
     return Object.keys(next).length === 0;
   };
@@ -131,7 +113,7 @@ export default function ContactForm() {
           <form
             action="https://formspree.io/f/xyzdazjg"
             method="POST"
-            encType="multipart/form-data"
+            encType="application/x-www-form-urlencoded"
             onSubmit={onSubmit}
             ref={formRef}
             noValidate
@@ -142,9 +124,6 @@ export default function ContactForm() {
             <input type="hidden" name="_subject" value="New contact form submission" />
             <input type="text" name="company" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
             <input type="hidden" name="reason" value={reason ?? ''} />
-            <input type="hidden" name="budget" value={showProjectBlock && budget ? budget : ''} />
-            <input type="hidden" name="timeline" value={showProjectBlock && timeline ? timeline : ''} />
-            <input type="hidden" name="preferred_contact" value={pref} />
             <input type="hidden" name="consent" value={consent ? 'yes' : 'no'} />
             {/* Reason */}
             <div className="md:col-span-12" data-stagger>
@@ -203,53 +182,9 @@ export default function ContactForm() {
               {errors.message && <div data-error className="mt-[var(--space-8)] text-[13px] leading-[18px] text-red-400">{errors.message}</div>}
             </div>
 
-            {/* Conditional block */}
-            {showProjectBlock && (
-              <div className="md:col-span-12" data-stagger>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px]">
-                  <div>
-                    <div className="eyebrow mb-[var(--space-8)]">Budget</div>
-                    <div className="flex flex-wrap gap-[8px]">
-                      {budgets.map((b) => (
-                        <Chip key={b} label={b} selected={budget === b} onClick={() => setBudget(b)} />
-                      ))}
-                    </div>
-                    {errors.budget && <div data-error className="mt-[var(--space-8)] text-[13px] leading-[18px] text-red-400">{errors.budget}</div>}
-                  </div>
-                  <div>
-                    <div className="eyebrow mb-[var(--space-8)]">Timeline</div>
-                    <div className="flex flex-wrap gap-[8px]">
-                      {timelines.map((t) => (
-                        <Chip key={t} label={t} selected={timeline === t} onClick={() => setTimeline(t)} />
-                      ))}
-                    </div>
-                    {errors.timeline && <div data-error className="mt-[var(--space-8)] text-[13px] leading-[18px] text-red-400">{errors.timeline}</div>}
-                  </div>
-                  <div>
-                    <div className="eyebrow mb-[var(--space-8)]">Attachment</div>
-                    <input
-                      type="file"
-                      onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-                      className="block w-full text-[13px] file:mr-[var(--space-12)] file:py-[var(--space-8)] file:px-[var(--space-12)] file:rounded-[var(--radius)] file:border file:border-[hsl(var(--border))] file:bg-[hsl(var(--card))] file:text-[hsl(var(--text-1))]"
-                      accept=".pdf,.png,.jpg,.jpeg,.mp4"
-                      name="attachment"
-                      aria-describedby={errors.file ? 'file-error' : undefined}
-                    />
-                    {errors.file && <div id="file-error" data-error className="mt-[var(--space-8)] text-[13px] leading-[18px] text-red-400">{errors.file}</div>}
-                  </div>
-                </div>
-              </div>
-            )}
+            {/* Simplified: no budget/timeline/attachment */}
 
-            {/* Preferred contact */}
-            <div className="md:col-span-8" data-stagger>
-              <div className="eyebrow mb-[var(--space-8)]">Preferred contact</div>
-              <div className="flex flex-wrap gap-[8px]">
-                {prefs.map((p) => (
-                  <Chip key={p} label={p} selected={pref === p} onClick={() => setPref(p)} />
-                ))}
-              </div>
-            </div>
+            {/* Simplified: no preferred contact buttons */}
 
             {/* Consent */}
             <div className="md:col-span-4 flex items-end" data-stagger>

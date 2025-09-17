@@ -1,0 +1,46 @@
+{
+  "color": {
+    "background": "0 0% 0%",
+    "surface1": "0 0% 100% / 0.04",
+    "surface2": "0 0% 100% / 0.06",
+    "surface3": "0 0% 100% / 0.08",
+    "text1": "210 40% 98%",
+    "text2": "215 20% 76%",
+    "muted": "215 16% 65%",
+    "accent": "173 59% 55%",
+    "accentInk": "173 100% 10%",
+    "border": "0 0% 100% / 0.08",
+    "ring": "173 59% 55%"
+  },
+  "radius": "1.25rem",
+  "shadow": {
+    "card": "0 10px 30px rgba(0,0,0,0.35)",
+    "modal": "0 20px 60px rgba(0,0,0,0.45)"
+  },
+  "spacing": {
+    "4": "4px",
+    "8": "8px",
+    "12": "12px",
+    "16": "16px",
+    "24": "24px",
+    "32": "32px",
+    "40": "40px",
+    "96": "96px",
+    "128": "128px"
+  },
+  "typography": {
+    "display": "clamp(44px, 6vw, 64px)",
+    "h2": "32px",
+    "h3": "20px",
+    "body": "16px",
+    "detail": "14px"
+  },
+  "animation": {
+    "duration": {
+      "fast": "160ms",
+      "base": "200ms",
+      "slow": "240ms"
+    },
+    "easing": "cubic-bezier(0.22, 1, 0.36, 1)"
+  }
+}

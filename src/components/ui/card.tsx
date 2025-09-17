@@ -9,12 +9,16 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
       className={cn(
         "flex flex-col gap-6",
         "rounded-[var(--radius-lg)]",
-        "border border-[hsl(var(--border))]",
-        "bg-[hsl(var(--card))] text-[hsl(var(--text-1))]",
-        "shadow-[0_6px_24px_rgba(0,0,0,0.18)]",
+        "border border-[rgba(255,255,255,0.08)]",
+        "bg-[color:rgb(255_255_255/0.04)] text-[hsl(var(--text-1))]",
+        "shadow-[0_10px_30px_rgba(0,0,0,0.35)]",
+        "transition-[box-shadow,transform,background-color] duration-200 hover:bg-[rgb(255_255_255/0.06)]",
         "py-[var(--space-16)]",
         className
       )}
+      style={{
+        backgroundColor: 'rgb(255 255 255 / 0.04)'
+      }}
       {...props}
     />
   )

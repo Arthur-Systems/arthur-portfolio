@@ -18,11 +18,25 @@ html:not(.dark) {
 
 @layer base {
   :root {
+    /* Unified tokens (overridden at runtime by style vars) */
     /* Surfaces */
-    --bg: 222.2 84% 4.9%;
-    --card: 222.2 84% 6%;
-    --card-2: 222.2 84% 8%;
-    --overlay: 222.2 84% 3.5%;
+    --bg: 222 84% 5%;
+    --card: 222 84% 7%;
+    --card-2: 222 84% 9%;
+    --overlay: 222 84% 12%;
+
+    /* Tailwind-consumed aliases */
+    --background: var(--bg);
+    --foreground: 210 40% 98%;
+    --input: var(--card-2);
+    --popover: var(--card);
+    --popover-foreground: 210 40% 98%;
+    --card-foreground: 210 40% 98%;
+    --primary: var(--accent);
+    --primary-foreground: var(--accent-ink);
+    --secondary: var(--card-2);
+    --secondary-foreground: 210 40% 98%;
+    --muted-foreground: 215 20% 76%;
 
     /* Text */
     --text-1: 210 40% 98%;
@@ -30,16 +44,16 @@ html:not(.dark) {
     --muted: 215 16% 65%;
 
     /* Accent */
-    --accent: 160 84% 39%;
-    --accent-ink: 160 100% 10%;
+    --accent: 188 92% 52%;
+    --accent-ink: 188 100% 10%;
 
     /* Border / Ring */
-    --border: 217.2 32.6% 17.5%;
-    --ring: 160 84% 39%;
+    --border: 217 33% 18%;
+    --ring: var(--accent);
 
     /* Radius */
-    --radius: 0.625rem; /* 10px base */
-    --radius-lg: 1rem;  /* 16px cards */
+    --radius: 1rem; /* 16px cards */
+    --radius-lg: 1rem;
 
     /* Spacing scale (px) */
     --space-4: 4px;
@@ -49,6 +63,12 @@ html:not(.dark) {
     --space-24: 24px;
     --space-32: 32px;
     --space-40: 40px;
+    --space-96: 96px;
+    --space-128: 128px;
+
+    /* Shadows */
+    --shadow-card: 0 12px 36px rgba(0,0,0,0.28);
+    --shadow-modal: 0 20px 60px rgba(0,0,0,0.45);
   }
 
   .dark {
@@ -164,15 +184,24 @@ html:not(.dark) {
 @layer components {
   /* Unified chip style */
   .chip {
-    @apply inline-flex items-center h-8 px-3 rounded-full border text-[13px] font-medium text-white/80 transition-colors duration-200;
-    @apply border-white/10 bg-white/5 hover:bg-white/10;
+    @apply inline-flex items-center h-7 md:h-7 px-3 rounded-full border text-[13px] font-medium transition-colors;
+    color: hsl(var(--text-1));
+    border-color: hsl(var(--border));
+    background-color: hsl(var(--card));
+    transition-duration: 200ms;
+    transition-property: color, background-color, border-color, box-shadow, transform;
+  }
+  .chip:hover {
+    background-color: hsl(var(--card-2));
   }
   .chip--active {
-    @apply bg-emerald-400/15 border-emerald-400/25 text-emerald-300;
+    color: hsl(var(--accent));
+    border-color: hsl(var(--accent));
+    background-color: hsl(var(--accent) / 0.15);
   }
   .chip:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 2px rgba(16,185,129,0.4);
+    box-shadow: 0 0 0 2px hsl(var(--ring) / 0.5);
   }
 
   /* Section header styles */
@@ -185,14 +214,14 @@ html:not(.dark) {
 
   /* Subtle 3D hover for cards; animated via transform */
   [data-hover-card] {
-    transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease;
+    transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 200ms ease;
     will-change: transform;
     transform: translateZ(0);
   }
   @media (hover: hover) and (pointer: fine) {
     [data-hover-card]:hover {
-      transform: translateY(-4px) scale(1.01);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card);
     }
   }
 
@@ -272,8 +301,10 @@ canvas {
   contain: layout style paint;
 }
 
-/* Cursor handling: keep default cursor for interactivity to avoid a11y/UX issues */
-/* If a custom cursor is needed, scope it to a class instead of global * selector */
+/* Cursor handling: hide default cursor to show only custom cursor */
+* {
+  cursor: none !important;
+}
 
 /* Custom cursor for better UX */
 .custom-cursor {

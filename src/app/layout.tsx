@@ -9,6 +9,7 @@ import { Suspense } from "react";
 import { ThemeProvider } from "@/components/common/ThemeProvider";
 import { ThemeToggle } from "@/components/common/ThemeToggle";
 import { Navigation } from "@/components/layout/Navigation";
+import Footer from "@/components/layout/Footer";
 import { CustomCursor } from "@/components/common/CustomCursor";
 import MicroEffects from "@/components/common/MicroEffects";
 import { StructuredData } from "@/components/common/StructuredData";
@@ -24,6 +25,7 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import Head from "./head";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import { getDesignVars } from "@/lib/designVars";
 
 export const metadata: Metadata = {
   /** 👇 absolute origin for OG + Twitter cards */
@@ -88,7 +90,7 @@ export default function RootLayout({
         <StructuredData type="Person" data={{}} />
         <StructuredData type="WebSite" data={{}} />
       </head>
-      <body className={`font-sans antialiased bg-background text-foreground dark:bg-arthur-dark-bg dark:text-arthur-dark-text`}>
+      <body className={`font-sans antialiased text-foreground`}>
         <ThemeProvider>
           <LoaderProvider>
             <UIReadyProvider>
@@ -102,14 +104,26 @@ export default function RootLayout({
                   <CustomCursor />
                   <MicroEffects />
                   <ThemeToggle />
-                  {/* Page-wide gradient background to avoid black band behind fixed nav or pin spacers */}
-                  <div className="min-h-screen bg-[radial-gradient(circle_at_20%_80%,rgba(120,119,198,0.30)_0%,transparent_50%),radial-gradient(circle_at_80%_20%,rgba(255,119,198,0.30)_0%,transparent_50%),linear-gradient(135deg,#0f172a_0%,#000000_50%,#0f172a_100%)]">
+                  {/* Page-wide single Night Gradient background */}
+                  <div
+                    style={getDesignVars()}
+                    className="min-h-screen"
+                  >
+                    <div
+                      aria-hidden
+                      className="pointer-events-none fixed inset-0 -z-10"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, #0b1324 0%, #04070f 60%, #0b1324 100%)",
+                      }}
+                    />
                     <Navigation />
                     <main aria-busy={false} suppressHydrationWarning className="pb-[var(--space-40)]">
                       <ErrorBoundary>
                         {children}
                       </ErrorBoundary>
                     </main>
+                    <Footer />
                     <Toaster />
                   </div>
                   </ClientGate>
