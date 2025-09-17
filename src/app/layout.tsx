@@ -35,15 +35,15 @@ export const metadata: Metadata = {
   ),
   
   title: {
-    default: "Haichuan (Arthur) Wei • Engineer • Photographer • Storyteller",
-    template: "%s | Haichuan Wei",
+    default: "Arthur Wei • AI Engineer • Machine Learning • Software Developer",
+    template: "%s | Arthur Wei",
   },
-  description: "Personal portfolio of Haichuan (Arthur) Wei — Engineer, Photographer, and Storyteller. Creating immersive digital experiences at the intersection of technology and creativity.",
-  keywords: ["Haichuan Wei", "Arthur Wei", "Engineer", "Photographer", "Storyteller", "Full-stack Developer", "3D Graphics", "Motion Design", "Creative Technology"],
+  description: "Arthur Wei - AI Engineer and Machine Learning specialist. Building intelligent systems, optimizing models, and creating scalable AI solutions for real-world applications.",
+  keywords: ["Arthur Wei", "AI Engineer", "Machine Learning", "Artificial Intelligence", "ML Engineer", "Software Developer", "Python", "Deep Learning", "Computer Vision", "NLP"],
   authors: [{ name: "Haichuan Wei" }, { name: "Arthur Wei" }],
   openGraph: {
-    title: "Haichuan Wei • Engineer • Photographer • Storyteller",
-    description: "Creating immersive digital experiences at the intersection of technology and creativity.",
+    title: "Arthur Wei • AI Engineer • Machine Learning • Software Developer",
+    description: "AI Engineer and Machine Learning specialist building intelligent systems and scalable AI solutions.",
     url:
       process.env.NEXT_PUBLIC_SITE_URL ??
       `http://localhost:${process.env.PORT ?? 3000}`,
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/api/og?title=Haichuan%20Wei&subtitle=Engineer%20•%20Photographer%20•%20Storyteller",
+        url: "/api/og?title=Arthur%20Wei&subtitle=AI%20Engineer%20•%20Machine%20Learning%20•%20Software%20Developer",
         width: 1200,
         height: 630,
         alt: "Haichuan Wei Portfolio",
@@ -60,9 +60,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Haichuan Wei • Engineer • Photographer • Storyteller",
-    description: "Creating immersive digital experiences at the intersection of technology and creativity.",
-    images: ["/api/og?title=Haichuan%20Wei&subtitle=Engineer%20•%20Photographer%20•%20Storyteller"],
+    title: "Arthur Wei • AI Engineer • Machine Learning • Software Developer",
+    description: "AI Engineer and Machine Learning specialist building intelligent systems and scalable AI solutions.",
+    images: ["/api/og?title=Arthur%20Wei&subtitle=AI%20Engineer%20•%20Machine%20Learning%20•%20Software%20Developer"],
   },
   robots: "index, follow",
   alternates: {
